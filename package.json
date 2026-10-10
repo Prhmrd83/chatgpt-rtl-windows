@@ -1,0 +1,28 @@
+{
+  "name": "chatgpt-rtl-windows",
+  "version": "0.1.2",
+  "private": true,
+  "description": "Transactional RTL patch for the unified Windows ChatGPT desktop app, derived from rt25ai.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "test": "node --test tests/core.test.cjs tests/progress.test.cjs && node tests/render.cjs && node tests/surfaces.cjs",
+    "test:core": "node --test tests/core.test.cjs",
+    "test:render": "node tests/render.cjs",
+    "test:installer": "node --test tests/progress.test.cjs",
+    "test:surfaces": "node tests/surfaces.cjs"
+  },
+  "dependencies": {
+    "@electron/asar": "4.3.1",
+    "playwright-core": "1.64.0"
+  },
+  "devDependencies": {
+    "playwright": "1.64.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Prhmrd83/chatgpt-rtl-windows.git"
+  }
+}

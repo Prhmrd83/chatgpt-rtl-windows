@@ -1,0 +1,33 @@
+{
+  "generated": "2026-10-09T17:18:51.301Z",
+  "sourceVersion": "26.1002.7124.0",
+  "payload": "0.1.2",
+  "payloadMatches": true,
+  "editorModule": "/assets/dist-507cfe245cd7.js",
+  "entries": [
+    "webview/assets/index-ee7b49945c27.js",
+    "webview/assets/detachedWindow-8f1e4310531e.js"
+  ],
+  "startup": {
+    "isolatedProfile": true,
+    "payload": "0.1.2",
+    "passed": true
+  },
+  "nativeRollback": {
+    "previousSelected": true,
+    "latestRestored": true,
+    "integrityHealthy": true,
+    "issues": []
+  },
+  "sourceFingerprint": "de989c7a2cb3b676e8f96b675d3138bfea667c03433d7ff316bf6e217d781f5b",
+  "nativePanels": {
+    "plan": "Authenticated actual Plan direction and native decoration adapter activation observed; not full editing acceptance",
+    "question": "Owner-supplied actual Question screenshot: visual evidence only; remaining interactions delegated to owner",
+    "fileSaveCopyUndo": "Owner acceptance pending"
+  },
+  "releaseApproved": false,
+  "payloadSHA256": "fbe01f1c9a91021af301568d6bf8b862bc8e624b408e42781f05273715413764",
+  "scope": "Separate copied app, fresh renderer profile without copying authentication files; same-build update/rollback; partial authenticated-panel evidence",
+  "ownerAcceptancePending": true,
+  "reviewPackageRequestedByOwner": true
+}

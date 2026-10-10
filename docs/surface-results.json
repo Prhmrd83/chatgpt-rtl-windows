@@ -1,0 +1,1507 @@
+{
+  "scope": "Controlled surface fixtures, not real signed-in panels",
+  "baseline": false,
+  "checks": [
+    {
+      "name": "question-text RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 115.953125,
+        "right": 991,
+        "text": "نام بسته و مستندات را به chatgpt-rtl-windows تغییر می‌دهم. برای تغییر نام خود ریپازیتوری در GitHub، ابزار متصل گزینهٔ Rename ندارد و مرورگر داخلی وارد حساب شما نیست. لطفاً در https://github.com/Prhmrd83/chatgpt-rtl/settings نام Repository را به chatgpt-rtl-windows تغییر دهید و خبر بدهید؛ آماده‌سازی و آزمایش بسته را ادامه می‌دهم."
+      }
+    },
+    {
+      "name": "plan-title RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 639.953125,
+        "right": 991,
+        "text": "بهبود نمایش نصب و آیکون ChatGPT RTL"
+      }
+    },
+    {
+      "name": "plan-item RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 245.640625,
+        "right": 967,
+        "text": "هنگام دانلود و نصب، نشانگر متحرک همراه با زمان سپری‌شده نمایش داده شود؛ حتی وقتی اینترنت کند است و دانلود خروجی جدیدی ندارد."
+      }
+    },
+    {
+      "name": "plan-arithmetic RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 564.359375,
+        "right": 991,
+        "text": "نتیجهٔ محاسبه 2 + 3 = 5 در نسخهٔ 1.2.3 به تاریخ 2026-10-09 درست است."
+      }
+    },
+    {
+      "name": "doc-fa RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 586.734375,
+        "right": 991,
+        "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند."
+      }
+    },
+    {
+      "name": "doc-ar RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 629.484375,
+        "right": 991,
+        "text": "ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح."
+      }
+    },
+    {
+      "name": "doc-he RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 546.984375,
+        "right": 991,
+        "text": "ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה."
+      }
+    },
+    {
+      "name": "label-fa RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 586.734375,
+        "right": 991,
+        "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند."
+      }
+    },
+    {
+      "name": "label-ar RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 629.484375,
+        "right": 991,
+        "text": "ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح."
+      }
+    },
+    {
+      "name": "label-he RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 546.984375,
+        "right": 991,
+        "text": "ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה."
+      }
+    },
+    {
+      "name": "tooltip-fa RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 586.734375,
+        "right": 991,
+        "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند."
+      }
+    },
+    {
+      "name": "tooltip-ar RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 629.484375,
+        "right": 991,
+        "text": "ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح."
+      }
+    },
+    {
+      "name": "tooltip-he RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 546.984375,
+        "right": 991,
+        "text": "ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה."
+      }
+    },
+    {
+      "name": "grid-label RTL alignment",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "right",
+        "left": 639.078125,
+        "right": 991,
+        "text": "ChatGPT برای نمایش متن فارسی و انگلیسی بسیار مناسب است."
+      }
+    },
+    {
+      "name": "option-label-fa RTL text direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "left",
+        "left": 142,
+        "right": 546.265625,
+        "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند."
+      }
+    },
+    {
+      "name": "option-label-ar RTL text direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "left",
+        "left": 142,
+        "right": 503.515625,
+        "text": "ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح."
+      }
+    },
+    {
+      "name": "option-label-he RTL text direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "bidi": "isolate",
+        "align": "right",
+        "side": "left",
+        "left": 142,
+        "right": 586.015625,
+        "text": "ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה."
+      }
+    },
+    {
+      "name": "doc-en stays LTR",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "bidi": "isolate",
+        "align": "left",
+        "side": "left",
+        "left": 109,
+        "right": 454.484375,
+        "text": "The Persian greeting سلام means hello in English."
+      }
+    },
+    {
+      "name": "label-en stays LTR",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "bidi": "normal",
+        "align": "left",
+        "side": "left",
+        "left": 109,
+        "right": 454.484375,
+        "text": "The Persian greeting سلام means hello in English."
+      }
+    },
+    {
+      "name": "option-label-en stays LTR",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "bidi": "normal",
+        "align": "left",
+        "side": "left",
+        "left": 142,
+        "right": 487.484375,
+        "text": "The Persian greeting سلام means hello in English."
+      }
+    },
+    {
+      "name": "tooltip-en stays LTR",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "bidi": "isolate",
+        "align": "left",
+        "side": "left",
+        "left": 109,
+        "right": 454.484375,
+        "text": "The Persian greeting سلام means hello in English."
+      }
+    },
+    {
+      "name": "english-quote stays LTR",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "bidi": "isolate",
+        "align": "start",
+        "side": "left",
+        "left": 169,
+        "right": 939.515625,
+        "text": "Setup complete! A “ChatGPT RTL” shortcut has been added to your Desktop. Double-click it to open the app."
+      }
+    },
+    {
+      "name": "editor-english stays LTR",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "bidi": "isolate",
+        "align": "left",
+        "side": "left",
+        "left": 122,
+        "right": 379.9375,
+        "text": "English paragraph stays left aligned."
+      }
+    },
+    {
+      "name": "question-text preserves chatgpt-rtl-windows",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "c",
+            "x": 720.515625
+          },
+          {
+            "char": "h",
+            "x": 728.515625
+          },
+          {
+            "char": "a",
+            "x": 737.40625
+          },
+          {
+            "char": "t",
+            "x": 746.3125
+          },
+          {
+            "char": "g",
+            "x": 750.75
+          },
+          {
+            "char": "p",
+            "x": 759.65625
+          },
+          {
+            "char": "t",
+            "x": 768.546875
+          },
+          {
+            "char": "-",
+            "x": 773
+          },
+          {
+            "char": "r",
+            "x": 778.328125
+          },
+          {
+            "char": "t",
+            "x": 783.65625
+          },
+          {
+            "char": "l",
+            "x": 788.09375
+          },
+          {
+            "char": "-",
+            "x": 791.65625
+          },
+          {
+            "char": "w",
+            "x": 796.984375
+          },
+          {
+            "char": "i",
+            "x": 808.53125
+          },
+          {
+            "char": "n",
+            "x": 812.09375
+          },
+          {
+            "char": "d",
+            "x": 820.984375
+          },
+          {
+            "char": "o",
+            "x": 829.890625
+          },
+          {
+            "char": "w",
+            "x": 838.78125
+          },
+          {
+            "char": "s",
+            "x": 850.34375
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "question-text preserves https://github.com/Prhmrd83/chatgpt-rtl/settings",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "h",
+            "x": 488.328125
+          },
+          {
+            "char": "t",
+            "x": 497.21875
+          },
+          {
+            "char": "t",
+            "x": 501.671875
+          },
+          {
+            "char": "p",
+            "x": 506.109375
+          },
+          {
+            "char": "s",
+            "x": 515.015625
+          },
+          {
+            "char": ":",
+            "x": 523.015625
+          },
+          {
+            "char": "/",
+            "x": 527.453125
+          },
+          {
+            "char": "/",
+            "x": 531.90625
+          },
+          {
+            "char": "g",
+            "x": 536.34375
+          },
+          {
+            "char": "i",
+            "x": 545.25
+          },
+          {
+            "char": "t",
+            "x": 548.796875
+          },
+          {
+            "char": "h",
+            "x": 553.25
+          },
+          {
+            "char": "u",
+            "x": 562.140625
+          },
+          {
+            "char": "b",
+            "x": 571.046875
+          },
+          {
+            "char": ".",
+            "x": 579.9375
+          },
+          {
+            "char": "c",
+            "x": 584.390625
+          },
+          {
+            "char": "o",
+            "x": 592.390625
+          },
+          {
+            "char": "m",
+            "x": 601.28125
+          },
+          {
+            "char": "/",
+            "x": 614.609375
+          },
+          {
+            "char": "P",
+            "x": 619.0625
+          },
+          {
+            "char": "r",
+            "x": 629.734375
+          },
+          {
+            "char": "h",
+            "x": 635.0625
+          },
+          {
+            "char": "m",
+            "x": 643.953125
+          },
+          {
+            "char": "r",
+            "x": 657.28125
+          },
+          {
+            "char": "d",
+            "x": 662.609375
+          },
+          {
+            "char": "8",
+            "x": 671.515625
+          },
+          {
+            "char": "3",
+            "x": 680.40625
+          },
+          {
+            "char": "/",
+            "x": 689.3125
+          },
+          {
+            "char": "c",
+            "x": 693.75
+          },
+          {
+            "char": "h",
+            "x": 701.75
+          },
+          {
+            "char": "a",
+            "x": 710.65625
+          },
+          {
+            "char": "t",
+            "x": 719.546875
+          },
+          {
+            "char": "g",
+            "x": 724
+          },
+          {
+            "char": "p",
+            "x": 732.890625
+          },
+          {
+            "char": "t",
+            "x": 741.796875
+          },
+          {
+            "char": "-",
+            "x": 746.234375
+          },
+          {
+            "char": "r",
+            "x": 751.5625
+          },
+          {
+            "char": "t",
+            "x": 756.890625
+          },
+          {
+            "char": "l",
+            "x": 761.34375
+          },
+          {
+            "char": "/",
+            "x": 764.890625
+          },
+          {
+            "char": "s",
+            "x": 769.34375
+          },
+          {
+            "char": "e",
+            "x": 777.34375
+          },
+          {
+            "char": "t",
+            "x": 786.234375
+          },
+          {
+            "char": "t",
+            "x": 790.6875
+          },
+          {
+            "char": "i",
+            "x": 795.125
+          },
+          {
+            "char": "n",
+            "x": 798.6875
+          },
+          {
+            "char": "g",
+            "x": 807.578125
+          },
+          {
+            "char": "s",
+            "x": 816.484375
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "plan-arithmetic preserves 2 + 3 = 5",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 855.890625
+          },
+          {
+            "char": " ",
+            "x": 864.78125
+          },
+          {
+            "char": "+",
+            "x": 869.234375
+          },
+          {
+            "char": " ",
+            "x": 878.578125
+          },
+          {
+            "char": "3",
+            "x": 883.015625
+          },
+          {
+            "char": " ",
+            "x": 891.921875
+          },
+          {
+            "char": "=",
+            "x": 896.359375
+          },
+          {
+            "char": " ",
+            "x": 905.703125
+          },
+          {
+            "char": "5",
+            "x": 910.15625
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "plan-arithmetic preserves 1.2.3",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "1",
+            "x": 766.859375
+          },
+          {
+            "char": ".",
+            "x": 775.75
+          },
+          {
+            "char": "2",
+            "x": 780.203125
+          },
+          {
+            "char": ".",
+            "x": 789.09375
+          },
+          {
+            "char": "3",
+            "x": 793.546875
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "plan-arithmetic preserves 2026-10-09",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 634.046875
+          },
+          {
+            "char": "0",
+            "x": 642.9375
+          },
+          {
+            "char": "2",
+            "x": 651.84375
+          },
+          {
+            "char": "6",
+            "x": 660.734375
+          },
+          {
+            "char": "-",
+            "x": 669.640625
+          },
+          {
+            "char": "1",
+            "x": 674.96875
+          },
+          {
+            "char": "0",
+            "x": 683.859375
+          },
+          {
+            "char": "-",
+            "x": 692.765625
+          },
+          {
+            "char": "0",
+            "x": 698.09375
+          },
+          {
+            "char": "9",
+            "x": 706.984375
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "plan-link preserves https://example.com/a?x=1&y=2",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "h",
+            "x": 180.078125
+          },
+          {
+            "char": "t",
+            "x": 188.96875
+          },
+          {
+            "char": "t",
+            "x": 193.421875
+          },
+          {
+            "char": "p",
+            "x": 197.859375
+          },
+          {
+            "char": "s",
+            "x": 206.765625
+          },
+          {
+            "char": ":",
+            "x": 214.765625
+          },
+          {
+            "char": "/",
+            "x": 219.203125
+          },
+          {
+            "char": "/",
+            "x": 223.65625
+          },
+          {
+            "char": "e",
+            "x": 228.09375
+          },
+          {
+            "char": "x",
+            "x": 237
+          },
+          {
+            "char": "a",
+            "x": 245
+          },
+          {
+            "char": "m",
+            "x": 253.890625
+          },
+          {
+            "char": "p",
+            "x": 267.21875
+          },
+          {
+            "char": "l",
+            "x": 276.125
+          },
+          {
+            "char": "e",
+            "x": 279.671875
+          },
+          {
+            "char": ".",
+            "x": 288.578125
+          },
+          {
+            "char": "c",
+            "x": 293.015625
+          },
+          {
+            "char": "o",
+            "x": 301.015625
+          },
+          {
+            "char": "m",
+            "x": 309.921875
+          },
+          {
+            "char": "/",
+            "x": 323.25
+          },
+          {
+            "char": "a",
+            "x": 327.6875
+          },
+          {
+            "char": "?",
+            "x": 336.59375
+          },
+          {
+            "char": "x",
+            "x": 345.484375
+          },
+          {
+            "char": "=",
+            "x": 353.484375
+          },
+          {
+            "char": "1",
+            "x": 362.828125
+          },
+          {
+            "char": "&",
+            "x": 371.734375
+          },
+          {
+            "char": "y",
+            "x": 382.40625
+          },
+          {
+            "char": "=",
+            "x": 390.40625
+          },
+          {
+            "char": "2",
+            "x": 399.75
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "question logical text preserved",
+      "pass": true
+    },
+    {
+      "name": "editor child DOM preserved",
+      "pass": true
+    },
+    {
+      "name": "code DOM preserved",
+      "pass": true
+    },
+    {
+      "name": "question action order preserved",
+      "pass": true
+    },
+    {
+      "name": "button icon horizontal positions preserved",
+      "pass": true
+    },
+    {
+      "name": "bare flex row controls keep pixel positions",
+      "pass": true
+    },
+    {
+      "name": "link destination preserved",
+      "pass": true
+    },
+    {
+      "name": "no global direction attributes",
+      "pass": true
+    },
+    {
+      "name": "RTL button remains clickable",
+      "pass": true
+    },
+    {
+      "name": "code-content remains LTR",
+      "pass": true
+    },
+    {
+      "name": "code-editor remains LTR",
+      "pass": true
+    },
+    {
+      "name": "terminal remains LTR",
+      "pass": true
+    },
+    {
+      "name": "email-input remains LTR",
+      "pass": true
+    },
+    {
+      "name": "url-input remains LTR",
+      "pass": true
+    },
+    {
+      "name": "editor paragraph uses RTL",
+      "pass": true
+    },
+    {
+      "name": "question reply RTL",
+      "pass": true
+    },
+    {
+      "name": "ordinary text input RTL",
+      "pass": true
+    },
+    {
+      "name": "input returns to LTR",
+      "pass": true
+    },
+    {
+      "name": "save preserves entered characters",
+      "pass": true
+    },
+    {
+      "name": "dynamic panel becomes RTL",
+      "pass": true
+    },
+    {
+      "name": "framework text node remains connected",
+      "pass": true
+    },
+    {
+      "name": "dynamic panel exact text",
+      "pass": true
+    },
+    {
+      "name": "dynamic panel returns LTR",
+      "pass": true
+    },
+    {
+      "name": "dynamic update leaves no duplicate fragments",
+      "pass": true
+    },
+    {
+      "name": "open shadow root prose RTL",
+      "pass": true,
+      "detail": {
+        "text": "rtl",
+        "code": "ltr"
+      }
+    },
+    {
+      "name": "open shadow root code LTR",
+      "pass": true,
+      "detail": {
+        "text": "rtl",
+        "code": "ltr"
+      }
+    },
+    {
+      "name": "late-attached shadow root discovered",
+      "pass": true
+    },
+    {
+      "name": "app-wide rescan idempotent",
+      "pass": true
+    },
+    {
+      "name": "read-only selection survives rescan",
+      "pass": true
+    },
+    {
+      "name": "control framework anchor stays connected",
+      "pass": true
+    },
+    {
+      "name": "control framework update exact text",
+      "pass": true
+    },
+    {
+      "name": "controlled input reset returns LTR",
+      "pass": true
+    },
+    {
+      "name": "plain source adapter RTL",
+      "pass": true
+    },
+    {
+      "name": "plain source switched to code becomes LTR",
+      "pass": true
+    },
+    {
+      "name": "prose switched to code retires RTL",
+      "pass": true
+    },
+    {
+      "name": "context change restores logical text",
+      "pass": true
+    },
+    {
+      "name": "same-origin embedded document RTL",
+      "pass": true
+    },
+    {
+      "name": "root coverage diagnostics available",
+      "pass": true
+    },
+    {
+      "name": "native Markdown metadata on content is detected",
+      "pass": true
+    },
+    {
+      "name": "native Markdown English line stays LTR",
+      "pass": true
+    },
+    {
+      "name": "native Markdown model DOM unchanged",
+      "pass": true
+    },
+    {
+      "name": "native tab switches to code without RTL",
+      "pass": true
+    },
+    {
+      "name": "native tab returns to plaintext RTL",
+      "pass": true
+    },
+    {
+      "name": "native fenced code line stays LTR",
+      "pass": true
+    },
+    {
+      "name": "native Markdown table syntax stays LTR",
+      "pass": true
+    },
+    {
+      "name": "nested editor heading RTL",
+      "pass": true
+    },
+    {
+      "name": "nested editor paragraph RTL",
+      "pass": true
+    },
+    {
+      "name": "nested editor English paragraph LTR",
+      "pass": true
+    },
+    {
+      "name": "CSS-only editor undo restores text",
+      "pass": true
+    },
+    {
+      "name": "fa native choice text direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "rightGap": 323.203125,
+        "leftGap": 0,
+        "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند. 2 + 3 = 5",
+        "title": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند. 2 + 3 = 5"
+      }
+    },
+    {
+      "name": "fa native choice logical text exact",
+      "pass": true
+    },
+    {
+      "name": "fa native choice arithmetic stays LTR",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 148.90625
+          },
+          {
+            "char": " ",
+            "x": 157.796875
+          },
+          {
+            "char": "+",
+            "x": 162.25
+          },
+          {
+            "char": " ",
+            "x": 171.59375
+          },
+          {
+            "char": "3",
+            "x": 176.03125
+          },
+          {
+            "char": " ",
+            "x": 184.9375
+          },
+          {
+            "char": "=",
+            "x": 189.375
+          },
+          {
+            "char": " ",
+            "x": 198.71875
+          },
+          {
+            "char": "5",
+            "x": 203.171875
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "ar native choice text direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "rightGap": 365.953125,
+        "leftGap": 0,
+        "text": "ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح. 2 + 3 = 5",
+        "title": "ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح. 2 + 3 = 5"
+      }
+    },
+    {
+      "name": "ar native choice logical text exact",
+      "pass": true
+    },
+    {
+      "name": "ar native choice arithmetic stays LTR",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 148.90625
+          },
+          {
+            "char": " ",
+            "x": 157.796875
+          },
+          {
+            "char": "+",
+            "x": 162.25
+          },
+          {
+            "char": " ",
+            "x": 171.59375
+          },
+          {
+            "char": "3",
+            "x": 176.03125
+          },
+          {
+            "char": " ",
+            "x": 184.9375
+          },
+          {
+            "char": "=",
+            "x": 189.375
+          },
+          {
+            "char": " ",
+            "x": 198.71875
+          },
+          {
+            "char": "5",
+            "x": 203.171875
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "he native choice text direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "rightGap": 283.46875,
+        "leftGap": 0,
+        "text": "ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה. 2 + 3 = 5",
+        "title": "ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה. 2 + 3 = 5"
+      }
+    },
+    {
+      "name": "he native choice logical text exact",
+      "pass": true
+    },
+    {
+      "name": "he native choice arithmetic stays LTR",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 148.90625
+          },
+          {
+            "char": " ",
+            "x": 157.796875
+          },
+          {
+            "char": "+",
+            "x": 162.25
+          },
+          {
+            "char": " ",
+            "x": 171.59375
+          },
+          {
+            "char": "3",
+            "x": 176.03125
+          },
+          {
+            "char": " ",
+            "x": 184.9375
+          },
+          {
+            "char": "=",
+            "x": 189.375
+          },
+          {
+            "char": " ",
+            "x": 198.71875
+          },
+          {
+            "char": "5",
+            "x": 203.171875
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "en native choice text direction",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "rightGap": 382,
+        "leftGap": 0,
+        "text": "The Persian greeting سلام means hello in English. 2 + 3 = 5",
+        "title": "The Persian greeting سلام means hello in English. 2 + 3 = 5"
+      }
+    },
+    {
+      "name": "en native choice logical text exact",
+      "pass": true
+    },
+    {
+      "name": "en native choice arithmetic stays LTR",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 498.828125
+          },
+          {
+            "char": " ",
+            "x": 507.734375
+          },
+          {
+            "char": "+",
+            "x": 512.171875
+          },
+          {
+            "char": " ",
+            "x": 521.515625
+          },
+          {
+            "char": "3",
+            "x": 525.96875
+          },
+          {
+            "char": " ",
+            "x": 534.859375
+          },
+          {
+            "char": "=",
+            "x": 539.3125
+          },
+          {
+            "char": " ",
+            "x": 548.65625
+          },
+          {
+            "char": "5",
+            "x": 553.09375
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "native choice markers and arrows do not move",
+      "pass": true,
+      "detail": {
+        "before": [
+          {
+            "x": 128,
+            "y": 835.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 841.828125,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "x": 128,
+            "y": 863.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 869.828125,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "x": 128,
+            "y": 891.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 897.828125,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "x": 128,
+            "y": 919.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 925.828125,
+            "width": 16,
+            "height": 16
+          }
+        ],
+        "after": [
+          {
+            "x": 128,
+            "y": 835.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 841.828125,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "x": 128,
+            "y": 863.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 869.828125,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "x": 128,
+            "y": 891.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 897.828125,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "x": 128,
+            "y": 919.828125,
+            "width": 8.90625,
+            "height": 28
+          },
+          {
+            "x": 956,
+            "y": 925.828125,
+            "width": 16,
+            "height": 16
+          }
+        ]
+      }
+    },
+    {
+      "name": "native choice click target preserved",
+      "pass": true
+    },
+    {
+      "name": "native choice changing to English restores LTR",
+      "pass": true
+    },
+    {
+      "name": "fa question direction",
+      "pass": true
+    },
+    {
+      "name": "fa reply direction",
+      "pass": true
+    },
+    {
+      "name": "fa text input direction",
+      "pass": true
+    },
+    {
+      "name": "fa rich editor direction",
+      "pass": true
+    },
+    {
+      "name": "fa saved fixture text exact",
+      "pass": true
+    },
+    {
+      "name": "ar question direction",
+      "pass": true
+    },
+    {
+      "name": "ar reply direction",
+      "pass": true
+    },
+    {
+      "name": "ar text input direction",
+      "pass": true
+    },
+    {
+      "name": "ar rich editor direction",
+      "pass": true
+    },
+    {
+      "name": "ar saved fixture text exact",
+      "pass": true
+    },
+    {
+      "name": "he question direction",
+      "pass": true
+    },
+    {
+      "name": "he reply direction",
+      "pass": true
+    },
+    {
+      "name": "he text input direction",
+      "pass": true
+    },
+    {
+      "name": "he rich editor direction",
+      "pass": true
+    },
+    {
+      "name": "he saved fixture text exact",
+      "pass": true
+    },
+    {
+      "name": "en question direction",
+      "pass": true
+    },
+    {
+      "name": "en reply direction",
+      "pass": true
+    },
+    {
+      "name": "en text input direction",
+      "pass": true
+    },
+    {
+      "name": "en rich editor direction",
+      "pass": true
+    },
+    {
+      "name": "en saved fixture text exact",
+      "pass": true
+    },
+    {
+      "name": "large editor completes staged direction within 4 seconds",
+      "pass": true,
+      "detail": {
+        "ms": 1146.5,
+        "pending": 0
+      }
+    },
+    {
+      "name": "large editor preserves model paragraphs",
+      "pass": true
+    },
+    {
+      "name": "no renderer errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "pass": 116,
+  "total": 116,
+  "errors": []
+}

@@ -1,0 +1,1098 @@
+{
+  "generated": "2026-10-09T18:19:14.904Z",
+  "browser": "145.0.7632.6",
+  "scope": "Isolated browser fixtures, not signed-in ChatGPT sessions",
+  "appVersion": "26.1002.7124.0",
+  "results": [
+    {
+      "id": "chatgpt-rtl-windows",
+      "repository": "Prhmrd83/chatgpt-rtl-windows",
+      "mode": "neutral-fixture",
+      "checks": [
+        {
+          "name": "fa alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 691.703125,
+            "right": 1010,
+            "text": "این یک جملهٔ فارسی برای آزمایش نمایش درست است."
+          }
+        },
+        {
+          "name": "mixed alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 545.203125,
+            "right": 1010,
+            "text": "من برای نوشتن کد از ChatGPT و Visual Studio Code استفاده می‌کنم."
+          }
+        },
+        {
+          "name": "latin-first alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 555.1875,
+            "right": 1010,
+            "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند."
+          }
+        },
+        {
+          "name": "english alignment",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 590.25,
+            "text": "This English paragraph should remain left aligned."
+          }
+        },
+        {
+          "name": "english-mixed alignment",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 578.671875,
+            "text": "The Persian greeting سلام means hello in English."
+          }
+        },
+        {
+          "name": "inline alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 564.078125,
+            "right": 1010,
+            "text": "برای نصب، دستور npm install package@1.2.3 را اجرا کنید."
+          }
+        },
+        {
+          "name": "heading alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 844.203125,
+            "right": 1010,
+            "text": "راهنمای نصب ChatGPT"
+          }
+        },
+        {
+          "name": "quote alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 729.765625,
+            "right": 986,
+            "text": "نقل قول فارسی همراه با English words"
+          }
+        },
+        {
+          "name": "user-div alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 798.453125,
+            "right": 1010,
+            "text": "این پیام فارسی همراه با OpenAI است."
+          }
+        },
+        {
+          "name": "input-fa alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 794.921875,
+            "right": 997,
+            "text": "من از ChatGPT استفاده می‌کنم."
+          }
+        },
+        {
+          "name": "inline-code LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "left",
+            "left": 644.359375,
+            "right": 891.78125,
+            "text": "npm install package@1.2.3"
+          }
+        },
+        {
+          "name": "pre LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "left",
+            "side": "left",
+            "left": 204,
+            "right": 394.65625,
+            "text": "const message = \"سلام\";\nconsole.log(message);"
+          }
+        },
+        {
+          "name": "block-code LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "left",
+            "side": "left",
+            "left": 204,
+            "right": 394.65625,
+            "text": "const message = \"سلام\";\nconsole.log(message);"
+          }
+        },
+        {
+          "name": "katex LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 229.875,
+            "right": 309.9375,
+            "text": "x+2=5"
+          }
+        },
+        {
+          "name": "RTL list markers",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 978,
+            "text": "مرحلهٔ اول: نصب Node.jsمرحلهٔ دوم: اجرای برنامه"
+          }
+        },
+        {
+          "name": "arithmetic operand order",
+          "pass": true,
+          "detail": [
+            {
+              "char": "2",
+              "x": 858
+            },
+            {
+              "char": "3",
+              "x": 888.515625
+            },
+            {
+              "char": "5",
+              "x": 919.046875
+            }
+          ]
+        },
+        {
+          "name": "ISO date order",
+          "pass": true,
+          "detail": {
+            "found": true,
+            "positions": [
+              {
+                "char": "2",
+                "x": 781.5625
+              },
+              {
+                "char": "0",
+                "x": 791.5625
+              },
+              {
+                "char": "2",
+                "x": 801.578125
+              },
+              {
+                "char": "6",
+                "x": 811.59375
+              },
+              {
+                "char": "-",
+                "x": 821.59375
+              },
+              {
+                "char": "1",
+                "x": 827.59375
+              },
+              {
+                "char": "0",
+                "x": 837.609375
+              },
+              {
+                "char": "-",
+                "x": 847.609375
+              },
+              {
+                "char": "0",
+                "x": 853.609375
+              },
+              {
+                "char": "7",
+                "x": 863.625
+              }
+            ],
+            "ltr": true
+          }
+        },
+        {
+          "name": "version number order",
+          "pass": true,
+          "detail": {
+            "found": true,
+            "positions": [
+              {
+                "char": "1",
+                "x": 934.703125
+              },
+              {
+                "char": ".",
+                "x": 944.703125
+              },
+              {
+                "char": "2",
+                "x": 949.703125
+              },
+              {
+                "char": ".",
+                "x": 959.71875
+              },
+              {
+                "char": "3",
+                "x": 964.71875
+              }
+            ],
+            "ltr": true
+          }
+        },
+        {
+          "name": "URL character order",
+          "pass": true,
+          "detail": {
+            "found": true,
+            "positions": [
+              {
+                "char": "h",
+                "x": 228.09375
+              },
+              {
+                "char": "t",
+                "x": 238.09375
+              },
+              {
+                "char": "t",
+                "x": 243.09375
+              },
+              {
+                "char": "p",
+                "x": 248.09375
+              },
+              {
+                "char": "s",
+                "x": 258.109375
+              },
+              {
+                "char": ":",
+                "x": 267.109375
+              },
+              {
+                "char": "/",
+                "x": 272.109375
+              },
+              {
+                "char": "/",
+                "x": 277.109375
+              },
+              {
+                "char": "e",
+                "x": 282.109375
+              },
+              {
+                "char": "x",
+                "x": 292.125
+              },
+              {
+                "char": "a",
+                "x": 301.125
+              },
+              {
+                "char": "m",
+                "x": 311.140625
+              },
+              {
+                "char": "p",
+                "x": 326.125
+              },
+              {
+                "char": "l",
+                "x": 336.140625
+              },
+              {
+                "char": "e",
+                "x": 340.140625
+              },
+              {
+                "char": ".",
+                "x": 350.15625
+              },
+              {
+                "char": "c",
+                "x": 355.15625
+              },
+              {
+                "char": "o",
+                "x": 364.15625
+              },
+              {
+                "char": "m",
+                "x": 374.15625
+              },
+              {
+                "char": "/",
+                "x": 389.15625
+              },
+              {
+                "char": "a",
+                "x": 394.15625
+              },
+              {
+                "char": "?",
+                "x": 404.171875
+              },
+              {
+                "char": "x",
+                "x": 414.171875
+              },
+              {
+                "char": "=",
+                "x": 423.171875
+              },
+              {
+                "char": "1",
+                "x": 433.6875
+              },
+              {
+                "char": "&",
+                "x": 443.703125
+              },
+              {
+                "char": "y",
+                "x": 455.703125
+              },
+              {
+                "char": "=",
+                "x": 464.703125
+              },
+              {
+                "char": "2",
+                "x": 475.21875
+              }
+            ],
+            "ltr": true
+          }
+        },
+        {
+          "name": "message text preservation",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "editor child DOM preservation",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "embedded controls keep LTR order",
+          "pass": true,
+          "detail": [
+            266.859375,
+            281.765625
+          ]
+        },
+        {
+          "name": "sidebar position unchanged",
+          "pass": true,
+          "detail": {
+            "x": 16,
+            "y": 16,
+            "width": 157.578125,
+            "height": 21,
+            "top": 16,
+            "right": 173.578125,
+            "bottom": 37,
+            "left": 16
+          }
+        },
+        {
+          "name": "streaming characterData update",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 561.46875,
+            "right": 1010,
+            "text": "English text این جملهٔ فارسی برای آزمایش متن زنده و جهت نوشته است."
+          }
+        },
+        {
+          "name": "edited content returns to LTR",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 495.1875,
+            "text": "Completely English again, left aligned."
+          }
+        },
+        {
+          "name": "same-length edit returns to LTR",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 682.25,
+            "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "name": "editable typing survives",
+          "pass": true,
+          "detail": "من با ChatGPT متن فارسی جدید می‌نویسم."
+        },
+        {
+          "name": "400 token append completes under 3 seconds",
+          "pass": true,
+          "detail": 59
+        },
+        {
+          "name": "no script errors",
+          "pass": true,
+          "detail": []
+        }
+      ],
+      "pass": 29,
+      "total": 29
+    },
+    {
+      "id": "chatgpt-rtl-windows",
+      "repository": "Prhmrd83/chatgpt-rtl-windows",
+      "mode": "installed-styles",
+      "checks": [
+        {
+          "name": "fa alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 691.703125,
+            "right": 1010,
+            "text": "این یک جملهٔ فارسی برای آزمایش نمایش درست است."
+          }
+        },
+        {
+          "name": "mixed alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 545.203125,
+            "right": 1010,
+            "text": "من برای نوشتن کد از ChatGPT و Visual Studio Code استفاده می‌کنم."
+          }
+        },
+        {
+          "name": "latin-first alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 555.1875,
+            "right": 1010,
+            "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند."
+          }
+        },
+        {
+          "name": "english alignment",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 590.25,
+            "text": "This English paragraph should remain left aligned."
+          }
+        },
+        {
+          "name": "english-mixed alignment",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 578.671875,
+            "text": "The Persian greeting سلام means hello in English."
+          }
+        },
+        {
+          "name": "inline alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 564.078125,
+            "right": 1010,
+            "text": "برای نصب، دستور npm install package@1.2.3 را اجرا کنید."
+          }
+        },
+        {
+          "name": "heading alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 844.765625,
+            "right": 1010,
+            "text": "راهنمای نصب ChatGPT"
+          }
+        },
+        {
+          "name": "quote alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 729.765625,
+            "right": 986,
+            "text": "نقل قول فارسی همراه با English words"
+          }
+        },
+        {
+          "name": "user-div alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 798.453125,
+            "right": 1010,
+            "text": "این پیام فارسی همراه با OpenAI است."
+          }
+        },
+        {
+          "name": "input-fa alignment",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 794.921875,
+            "right": 997,
+            "text": "من از ChatGPT استفاده می‌کنم."
+          }
+        },
+        {
+          "name": "inline-code LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "left",
+            "left": 644.359375,
+            "right": 891.78125,
+            "text": "npm install package@1.2.3"
+          }
+        },
+        {
+          "name": "pre LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "left",
+            "side": "left",
+            "left": 204,
+            "right": 394.65625,
+            "text": "const message = \"سلام\";\nconsole.log(message);"
+          }
+        },
+        {
+          "name": "block-code LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "left",
+            "side": "left",
+            "left": 204,
+            "right": 394.65625,
+            "text": "const message = \"سلام\";\nconsole.log(message);"
+          }
+        },
+        {
+          "name": "katex LTR isolation",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 229.875,
+            "right": 317.140625,
+            "text": "x+2=5"
+          }
+        },
+        {
+          "name": "RTL list markers",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 978,
+            "text": "مرحلهٔ اول: نصب Node.jsمرحلهٔ دوم: اجرای برنامه"
+          }
+        },
+        {
+          "name": "arithmetic operand order",
+          "pass": true,
+          "detail": [
+            {
+              "char": "2",
+              "x": 858
+            },
+            {
+              "char": "3",
+              "x": 888.515625
+            },
+            {
+              "char": "5",
+              "x": 919.046875
+            }
+          ]
+        },
+        {
+          "name": "ISO date order",
+          "pass": true,
+          "detail": {
+            "found": true,
+            "positions": [
+              {
+                "char": "2",
+                "x": 781.5625
+              },
+              {
+                "char": "0",
+                "x": 791.5625
+              },
+              {
+                "char": "2",
+                "x": 801.578125
+              },
+              {
+                "char": "6",
+                "x": 811.59375
+              },
+              {
+                "char": "-",
+                "x": 821.59375
+              },
+              {
+                "char": "1",
+                "x": 827.59375
+              },
+              {
+                "char": "0",
+                "x": 837.609375
+              },
+              {
+                "char": "-",
+                "x": 847.609375
+              },
+              {
+                "char": "0",
+                "x": 853.609375
+              },
+              {
+                "char": "7",
+                "x": 863.625
+              }
+            ],
+            "ltr": true
+          }
+        },
+        {
+          "name": "version number order",
+          "pass": true,
+          "detail": {
+            "found": true,
+            "positions": [
+              {
+                "char": "1",
+                "x": 934.703125
+              },
+              {
+                "char": ".",
+                "x": 944.703125
+              },
+              {
+                "char": "2",
+                "x": 949.703125
+              },
+              {
+                "char": ".",
+                "x": 959.71875
+              },
+              {
+                "char": "3",
+                "x": 964.71875
+              }
+            ],
+            "ltr": true
+          }
+        },
+        {
+          "name": "URL character order",
+          "pass": true,
+          "detail": {
+            "found": true,
+            "positions": [
+              {
+                "char": "h",
+                "x": 228.09375
+              },
+              {
+                "char": "t",
+                "x": 238.09375
+              },
+              {
+                "char": "t",
+                "x": 243.09375
+              },
+              {
+                "char": "p",
+                "x": 248.09375
+              },
+              {
+                "char": "s",
+                "x": 258.109375
+              },
+              {
+                "char": ":",
+                "x": 267.109375
+              },
+              {
+                "char": "/",
+                "x": 272.109375
+              },
+              {
+                "char": "/",
+                "x": 277.109375
+              },
+              {
+                "char": "e",
+                "x": 282.109375
+              },
+              {
+                "char": "x",
+                "x": 292.125
+              },
+              {
+                "char": "a",
+                "x": 301.125
+              },
+              {
+                "char": "m",
+                "x": 311.140625
+              },
+              {
+                "char": "p",
+                "x": 326.125
+              },
+              {
+                "char": "l",
+                "x": 336.140625
+              },
+              {
+                "char": "e",
+                "x": 340.140625
+              },
+              {
+                "char": ".",
+                "x": 350.15625
+              },
+              {
+                "char": "c",
+                "x": 355.15625
+              },
+              {
+                "char": "o",
+                "x": 364.15625
+              },
+              {
+                "char": "m",
+                "x": 374.15625
+              },
+              {
+                "char": "/",
+                "x": 389.15625
+              },
+              {
+                "char": "a",
+                "x": 394.15625
+              },
+              {
+                "char": "?",
+                "x": 404.171875
+              },
+              {
+                "char": "x",
+                "x": 414.171875
+              },
+              {
+                "char": "=",
+                "x": 423.171875
+              },
+              {
+                "char": "1",
+                "x": 433.6875
+              },
+              {
+                "char": "&",
+                "x": 443.703125
+              },
+              {
+                "char": "y",
+                "x": 455.703125
+              },
+              {
+                "char": "=",
+                "x": 464.703125
+              },
+              {
+                "char": "2",
+                "x": 475.21875
+              }
+            ],
+            "ltr": true
+          }
+        },
+        {
+          "name": "message text preservation",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "editor child DOM preservation",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "embedded controls keep LTR order",
+          "pass": true,
+          "detail": [
+            258.859375,
+            276.875
+          ]
+        },
+        {
+          "name": "sidebar position unchanged",
+          "pass": true,
+          "detail": {
+            "x": 16,
+            "y": 16,
+            "width": 129.09375,
+            "height": 24,
+            "top": 16,
+            "right": 145.09375,
+            "bottom": 40,
+            "left": 16
+          }
+        },
+        {
+          "name": "streaming characterData update",
+          "pass": true,
+          "detail": {
+            "direction": "rtl",
+            "bidi": "isolate",
+            "align": "right",
+            "side": "right",
+            "left": 561.46875,
+            "right": 1010,
+            "text": "English text این جملهٔ فارسی برای آزمایش متن زنده و جهت نوشته است."
+          }
+        },
+        {
+          "name": "edited content returns to LTR",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 495.1875,
+            "text": "Completely English again, left aligned."
+          }
+        },
+        {
+          "name": "same-length edit returns to LTR",
+          "pass": true,
+          "detail": {
+            "direction": "ltr",
+            "bidi": "isolate",
+            "align": "start",
+            "side": "left",
+            "left": 190,
+            "right": 682.25,
+            "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "name": "editable typing survives",
+          "pass": true,
+          "detail": "من با ChatGPT متن فارسی جدید می‌نویسم."
+        },
+        {
+          "name": "400 token append completes under 3 seconds",
+          "pass": true,
+          "detail": 61
+        },
+        {
+          "name": "no script errors",
+          "pass": true,
+          "detail": []
+        }
+      ],
+      "pass": 29,
+      "total": 29
+    }
+  ],
+  "extended": [
+    {
+      "name": "Arabic English-first response",
+      "pass": true
+    },
+    {
+      "name": "Arabic English-first editor",
+      "pass": true
+    },
+    {
+      "name": "Hebrew English-first response",
+      "pass": true
+    },
+    {
+      "name": "Hebrew English-first editor",
+      "pass": true
+    },
+    {
+      "name": "Persian English-first editor",
+      "pass": true
+    },
+    {
+      "name": "textarea English-first input",
+      "pass": true
+    },
+    {
+      "name": "editor returns to English",
+      "pass": true
+    },
+    {
+      "name": "selection survives inline isolation",
+      "pass": true
+    },
+    {
+      "name": "rescan idempotent",
+      "pass": true
+    },
+    {
+      "name": "no dir or lang added",
+      "pass": true
+    },
+    {
+      "name": "number-only text stays LTR",
+      "pass": true
+    },
+    {
+      "name": "framework Text node stays connected",
+      "pass": true
+    },
+    {
+      "name": "framework full-text update has no duplicate tokens",
+      "pass": true
+    },
+    {
+      "name": "streamed arithmetic stays LTR",
+      "pass": true
+    },
+    {
+      "name": "framework Text-node replacement removes owned spans",
+      "pass": true
+    }
+  ]
+}

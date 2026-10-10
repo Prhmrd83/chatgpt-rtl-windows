@@ -1,0 +1,378 @@
+{
+  "scope": "Actual vendor CodeMirror library inside native Electron, controlled test editor; not actual file-tab save/undo acceptance",
+  "checks": [
+    {
+      "name": "native adapter active",
+      "pass": true,
+      "detail": {
+        "roots": 2,
+        "pending": 0,
+        "editorPending": 0,
+        "codeMirrorAdapters": 1,
+        "editorFailures": [],
+        "scope": "app-wide accessible text"
+      }
+    },
+    {
+      "name": "native adapter no errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "native model characters unchanged",
+      "pass": true
+    },
+    {
+      "name": "fa native line direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "align": "right",
+        "text": "ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند."
+      }
+    },
+    {
+      "name": "ar native line direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "align": "right",
+        "text": "ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح."
+      }
+    },
+    {
+      "name": "he native line direction",
+      "pass": true,
+      "detail": {
+        "direction": "rtl",
+        "align": "right",
+        "text": "ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה."
+      }
+    },
+    {
+      "name": "en native line direction",
+      "pass": true,
+      "detail": {
+        "direction": "ltr",
+        "align": "left",
+        "text": "The Persian greeting سلام means hello in English."
+      }
+    },
+    {
+      "name": "native visual order ChatGPT",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "C",
+            "x": 1450.1624755859375
+          },
+          {
+            "char": "h",
+            "x": 1457.300048828125
+          },
+          {
+            "char": "a",
+            "x": 1464.4500732421875
+          },
+          {
+            "char": "t",
+            "x": 1471.5999755859375
+          },
+          {
+            "char": "G",
+            "x": 1478.75
+          },
+          {
+            "char": "P",
+            "x": 1485.8875732421875
+          },
+          {
+            "char": "T",
+            "x": 1493.0374755859375
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "native visual order 2 + 3 = 5",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 1370.3375244140625
+          },
+          {
+            "char": " ",
+            "x": 1377.4749755859375
+          },
+          {
+            "char": "+",
+            "x": 1384.625
+          },
+          {
+            "char": " ",
+            "x": 1391.7750244140625
+          },
+          {
+            "char": "3",
+            "x": 1398.925048828125
+          },
+          {
+            "char": " ",
+            "x": 1406.0625
+          },
+          {
+            "char": "=",
+            "x": 1413.2125244140625
+          },
+          {
+            "char": " ",
+            "x": 1420.362548828125
+          },
+          {
+            "char": "5",
+            "x": 1427.5125732421875
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "native visual order 1.2.3",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "1",
+            "x": 1280.5750732421875
+          },
+          {
+            "char": ".",
+            "x": 1287.7125244140625
+          },
+          {
+            "char": "2",
+            "x": 1294.862548828125
+          },
+          {
+            "char": ".",
+            "x": 1302.0125732421875
+          },
+          {
+            "char": "3",
+            "x": 1309.1624755859375
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "native visual order 2026-10-09",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "2",
+            "x": 1157.0750732421875
+          },
+          {
+            "char": "0",
+            "x": 1164.2125244140625
+          },
+          {
+            "char": "2",
+            "x": 1171.362548828125
+          },
+          {
+            "char": "6",
+            "x": 1178.5125732421875
+          },
+          {
+            "char": "-",
+            "x": 1185.6624755859375
+          },
+          {
+            "char": "1",
+            "x": 1192.800048828125
+          },
+          {
+            "char": "0",
+            "x": 1199.9500732421875
+          },
+          {
+            "char": "-",
+            "x": 1207.0999755859375
+          },
+          {
+            "char": "0",
+            "x": 1214.25
+          },
+          {
+            "char": "9",
+            "x": 1221.4000244140625
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "native visual order https://example.com/a?x=1&y=2",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "positions": [
+          {
+            "char": "h",
+            "x": 1191.0250244140625
+          },
+          {
+            "char": "t",
+            "x": 1198.1624755859375
+          },
+          {
+            "char": "t",
+            "x": 1205.3125
+          },
+          {
+            "char": "p",
+            "x": 1212.4625244140625
+          },
+          {
+            "char": "s",
+            "x": 1219.612548828125
+          },
+          {
+            "char": ":",
+            "x": 1226.75
+          },
+          {
+            "char": "/",
+            "x": 1233.9000244140625
+          },
+          {
+            "char": "/",
+            "x": 1241.050048828125
+          },
+          {
+            "char": "e",
+            "x": 1248.2000732421875
+          },
+          {
+            "char": "x",
+            "x": 1255.3499755859375
+          },
+          {
+            "char": "a",
+            "x": 1262.487548828125
+          },
+          {
+            "char": "m",
+            "x": 1269.6375732421875
+          },
+          {
+            "char": "p",
+            "x": 1276.7874755859375
+          },
+          {
+            "char": "l",
+            "x": 1283.9375
+          },
+          {
+            "char": "e",
+            "x": 1291.0875244140625
+          },
+          {
+            "char": ".",
+            "x": 1298.2249755859375
+          },
+          {
+            "char": "c",
+            "x": 1305.375
+          },
+          {
+            "char": "o",
+            "x": 1312.5250244140625
+          },
+          {
+            "char": "m",
+            "x": 1319.675048828125
+          },
+          {
+            "char": "/",
+            "x": 1326.8250732421875
+          },
+          {
+            "char": "a",
+            "x": 1333.9625244140625
+          },
+          {
+            "char": "?",
+            "x": 1341.112548828125
+          },
+          {
+            "char": "x",
+            "x": 1348.2625732421875
+          },
+          {
+            "char": "=",
+            "x": 1355.4124755859375
+          },
+          {
+            "char": "1",
+            "x": 1362.5625
+          },
+          {
+            "char": "&",
+            "x": 1369.7000732421875
+          },
+          {
+            "char": "y",
+            "x": 1376.8499755859375
+          },
+          {
+            "char": "=",
+            "x": 1384
+          },
+          {
+            "char": "2",
+            "x": 1391.1500244140625
+          }
+        ],
+        "ltr": true
+      }
+    },
+    {
+      "name": "native edit keeps exact characters",
+      "pass": true
+    },
+    {
+      "name": "native edit reclassifies new line",
+      "pass": true
+    },
+    {
+      "name": "native selection maps to logical arithmetic",
+      "pass": true
+    },
+    {
+      "name": "native switch to code retires isolation",
+      "pass": true
+    },
+    {
+      "name": "native switch to code keeps LTR lines",
+      "pass": true
+    },
+    {
+      "name": "native model unchanged by file type switch",
+      "pass": true
+    }
+  ],
+  "pass": 18,
+  "total": 18
+}

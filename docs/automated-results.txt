@@ -1,0 +1,47 @@
+npm notice run chatgpt-rtl-windows@0.1.2 test
+npm notice run node --test tests/core.test.cjs tests/progress.test.cjs && node tests/render.cjs && node tests/surfaces.cjs
+✔ byte-preserving embedded hash replacement (1.5743ms)
+✔ invalid hash and malformed ASAR refused (4.8339ms)
+✔ only supported manifest identity and core flag accepted (0.3261ms)
+✔ entry requires one grounded module path (0.5274ms)
+✔ path traversal and filesystem root refused (10.3657ms)
+✔ nonempty unowned installation refused (5.3548ms)
+✔ lock serializes concurrent operations (16.4777ms)
+✔ install verifies backup and leaves original untouched (88.4221ms)
+✔ failure at copied preserves active generation (143.8932ms)
+✔ failure at patched preserves active generation (145.6562ms)
+✔ failure at validated preserves active generation (161.0408ms)
+✔ failed startup preserves old version (77.9676ms)
+✔ source changing during preparation prevents activation (36.1432ms)
+✔ tampered pristine backup prevents an update (69.7954ms)
+✔ rollback verifies snapshot and blocks the rejected candidate (148.8827ms)
+✔ tampered rollback target is refused (100.9638ms)
+✔ original rollback disables active copy and retains snapshots (62.7886ms)
+✔ retention keeps two previous healthy generations (175.4897ms)
+✔ disk-space preflight rejects impossible size (7.0067ms)
+✔ doctor reports interrupted preparation without activating it (15.3415ms)
+✔ launch uses one stable owned profile across generations (104.3138ms)
+✔ critical-file corruption refuses launch-path (48.471ms)
+✔ real ASAR adapter preserves untouched content and unpacked flags (81.1807ms)
+✔ silent slow download keeps showing elapsed progress until child completes (5322.0705ms)
+✔ network-like failure drains stderr and preserves nonzero child exit (2829.6966ms)
+✔ phase events reach parent while work is running and result is parsed (2784.8831ms)
+✔ quiet automatic runner emits no progress or captured child logs (671.872ms)
+✔ command arguments preserve spaces, quotes, trailing slashes and RTL text (631.5185ms)
+✔ invalid event stops only the owned process tree (898.1529ms)
+✔ successful exit without final event is rejected (754.4367ms)
+✔ JSON interface remains plain JSON; events has result/error envelopes (1367.7193ms)
+✔ shortcut creation and repeat install persist the stable custom icon (742.9048ms)
+✔ real npm download from a delayed disconnecting endpoint shows progress and fails clearly (10307.8567ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26405.3363
+neutral-fixture: 29/29
+installed-styles: 29/29
+Extended checks: 15/15
+App surfaces: 116/116
