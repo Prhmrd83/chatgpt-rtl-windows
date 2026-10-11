@@ -8,8 +8,11 @@ Native source: **OpenAI.Codex 26.1007.2314.0**.
 Installer version: **0.1.3**. Renderer version: **0.1.2**.
 
 The stable renderer was excluded from this audit. Its payload and the original
-renderer fixture/test files remain byte-identical to the baseline. No rendering
-suite was rerun and no text-direction algorithm was changed.
+renderer fixture/test files remain byte-identical to the baseline. No local
+rendering suite was rerun and no text-direction algorithm was changed. Creating
+the review branch automatically triggered the repository's original full CI
+workflow at the unchanged baseline. The updated audit workflow skips renderer
+checks for this change set.
 
 | Check | Result | Scope |
 | --- | --- | --- |

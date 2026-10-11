@@ -82,5 +82,9 @@ test('installed controller defaults to its own managed root',t=>{
   fs.cpSync(path.join(project,'scripts'),path.join(controller,'scripts'),{recursive:true});
   fs.writeFileSync(path.join(controller,'cli.cjs'),'console.log(JSON.stringify({active:process.argv[process.argv.indexOf("--root")+1],backups:[]}))');
   const r=spawnSync('powershell.exe',['-NoProfile','-ExecutionPolicy','Bypass','-File',path.join(controller,'chatgpt-rtl.ps1'),'status','-NoColor'],{encoding:'utf8',windowsHide:true,timeout:15000});
-  assert.equal(r.status,0,r.stderr);assert.ok(r.stdout.includes('Active version: '+root),r.stdout);
+  assert.equal(r.status,0,r.stderr);
+  const selected=r.stdout.match(/Active version: (.+)/)?.[1].trim();
+  assert.ok(selected,r.stdout);
+  // PowerShell expands Windows 8.3 paths in PSScriptRoot; compare directory identity.
+  assert.equal(fs.realpathSync(selected).toLowerCase(),fs.realpathSync(root).toLowerCase());
 });
