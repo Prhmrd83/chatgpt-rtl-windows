@@ -85,6 +85,8 @@ test('installed controller defaults to its own managed root',t=>{
   assert.equal(r.status,0,r.stderr);
   const selected=r.stdout.match(/Active version: (.+)/)?.[1].trim();
   assert.ok(selected,r.stdout);
-  // PowerShell expands Windows 8.3 paths in PSScriptRoot; compare directory identity.
-  assert.equal(fs.realpathSync(selected).toLowerCase(),fs.realpathSync(root).toLowerCase());
+  // Windows 8.3 aliases can survive realpath; compare volume and directory file ID.
+  const actual=fs.statSync(selected,{bigint:true}),expected=fs.statSync(root,{bigint:true});
+  assert.notEqual(expected.ino,0n);
+  assert.equal(actual.dev,expected.dev);assert.equal(actual.ino,expected.ino);
 });
