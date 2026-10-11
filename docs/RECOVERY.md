@@ -77,6 +77,7 @@ promise that every future ChatGPT release is supported.
 | App is running | Close only your managed ChatGPT RTL window; retry later. Background updates defer. |
 | Insufficient disk space | Free space; retain needed backups. Do not delete the active generation. |
 | Candidate blocked | Inspect logs and `doctor`; use `update --retry` only after addressing the failure. |
+| Reinstall blocked after rollback/uninstall | Run setup and explicitly accept its retry question, or use `chatgpt-rtl.cmd install --retry` after resolving any failure. Installation also restores the removed shortcuts/task. |
 | Unknown module entry/hash/core setting | Keep the original or last working copy; a compatibility adapter update is needed. |
 | Snapshot integrity failure | Do not activate that snapshot; use the original Store app and prepare a fresh copy after investigating. |
 | Updates unavailable inside copied app | Update the original through Store and use this project's `update` command. |

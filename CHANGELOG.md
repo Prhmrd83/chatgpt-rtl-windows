@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.3 — reinstall recovery
+
+- Explain blocked candidates during manual installation and offer one explicit
+  retry after rollback/uninstall; declining leaves the candidate blocked.
+- Repeat all backup, archive integrity, and isolated startup checks on retry.
+  Automatic updates remain noninteractive and do not bypass blocked candidates.
+- Support `setup.cmd -Retry` and restore shortcuts and the update task after a
+  successful reinstall. Report the correct install/update recovery command.
+- Add lifecycle and Windows installer regressions for acceptance, cancellation,
+  unrelated failures, retry failures, and successful integration restoration.
+
 ## 0.1.2 — owner-test candidate
 
 - Extend RTL classification to Questions/options, labels, menus, headings,

@@ -13,6 +13,7 @@ $cli = Join-Path $project 'cli.cjs'
 $taskName = 'ChatGPT RTL Safe Update'
 . (Join-Path $project 'scripts\progress.ps1')
 . (Join-Path $project 'scripts\integration.ps1')
+. (Join-Path $project 'scripts\install-retry.ps1')
 
 function Say([string]$Text,[ConsoleColor]$Color = 'Gray') {
     if ($NoColor -or $env:NO_COLOR) { Write-Host $Text } else { Write-Host $Text -ForegroundColor $Color }
@@ -28,7 +29,13 @@ function Invoke-Core([string]$Action,[string[]]$Extra = @()) {
     if (-not $Automatic -and $Action -in @('install','update') -and $Extra -notcontains '--automatic') {
         $arguments = @($cli,$Action,'--root',$Root,'--events') + $Extra
         $operation = Invoke-RtlProcess -FilePath $node -ArgumentList $arguments -WorkingDirectory $project -Stage 'Checking source files' -Events
-        if ($operation.ExitCode -ne 0) { throw 'Operation failed. Read the error above; run doctor for diagnostics.' }
+        if ($operation.ExitCode -ne 0) {
+            $failure = @($operation.Events | Where-Object type -eq 'error') | Select-Object -Last 1
+            $message = if ($failure) { [string]$failure.message } else { 'Operation failed. Read the error above; run doctor for diagnostics.' }
+            $exception = New-Object System.InvalidOperationException($message)
+            if ($failure.code) { $exception.Data['code'] = [string]$failure.code }
+            throw $exception
+        }
         return $operation.Result
     }
     $arguments = @($cli,$Action,'--root',$Root,'--json') + $Extra
@@ -68,7 +75,14 @@ function Run-Action([string]$Action) {
             $arguments = @('--source',$source.Path,'--source-version',$source.Version) + $extra
             if ($Automatic) { $arguments += '--automatic' }
             if (-not $Automatic) { Say '  Preparing a verified copy; the active version stays available.' Cyan }
-            $result = Invoke-Core $Action $arguments
+            if ($Action -eq 'install') {
+                $result = Invoke-RtlInstallWithRetry -Retry:($extra -contains '--retry') -Automatic:$Automatic -Install {
+                    param([bool]$retryCandidate)
+                    $attemptArguments = @($arguments)
+                    if ($retryCandidate -and $attemptArguments -notcontains '--retry') { $attemptArguments += '--retry' }
+                    Invoke-Core $Action $attemptArguments
+                }
+            } else { $result = Invoke-Core $Action $arguments }
             if ($Action -eq 'install') { Configure-Integration }
             if (-not $Automatic) { Say ('  [OK] Active version: ' + $result.active) Green }
             if ($Action -eq 'install' -and -not $Automatic) { Say '  Setup complete! A "ChatGPT RTL" shortcut has been added to your Desktop. Double-click it to open the app.' Green }

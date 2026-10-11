@@ -1,4 +1,30 @@
-# Validation report — 0.1.2 owner-test candidate
+# Validation report
+
+## 0.1.3 — reinstall recovery
+
+Validation date: **11 October 2026**. Platform: Windows.
+
+- Transaction/archive tests: **26/26 passed**. New regressions reproduce
+  install → original rollback → uninstall → blocked install → explicit retry,
+  retained backups, failed startup on retry, and typed CLI error events.
+- Installer/controller tests: **21/21 passed**. New cases cover accepting,
+  declining, empty input, one retry only, automatic/noninteractive behavior,
+  unrelated errors, restoration of integration only after success, and the
+  actual `setup.cmd -Retry` entry point from a folder with spaces.
+- Original rendering: **29/29 neutral and 29/29 with installed-app styles**
+  (retained stylesheet assets from `26.1002.7124.0`). Supplemental rendering:
+  **15/15**. App-wide surface fixtures: **116/116**. The renderer payload is
+  byte-identical to the tested 0.1.2 payload.
+- All shipped PowerShell scripts parse successfully.
+
+The reinstall app lifecycle uses synthetic source files and controlled startup
+checks. Windows wrapper tests execute the actual install/retry functions with
+controlled worker results and temporary shortcuts. They do not reinstall the
+owner's real Store app or claim a new native-panel acceptance test.
+Earlier sandbox-only temporary-file rename restrictions were resolved by using
+a writable workspace test directory; test assertions were not weakened.
+
+## 0.1.2 — historical validation
 
 Validation date: **9 October 2026**. Platform: Windows. Node.js: `24.15.0`.
 Store package: **OpenAI.Codex 26.1002.7124.0**.

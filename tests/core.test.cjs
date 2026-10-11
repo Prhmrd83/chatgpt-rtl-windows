@@ -105,6 +105,41 @@ test('original rollback disables active copy and retains snapshots',async t=>{
   await M.original(f.root);assert.equal(S.state(f.root).active,null);
   assert.ok(M.backups(f.root).some(x=>x.id===first.active));await S.verify(f.source,before);
 });
+
+test('rollback, uninstall and reinstall require explicit retry and retain healthy backups',async t=>{
+  const f=fixture(t),first=await M.install(f.options),original=await S.tree(f.source);
+  await M.original(f.root);
+  const blocked=S.state(f.root).blocked;
+  await run(['uninstall','--root',f.root]);
+  assert.equal(S.state(f.root).blocked,blocked);
+  await assert.rejects(M.install(f.options),e=>e.code==='CANDIDATE_BLOCKED'&&/install --retry/.test(e.message));
+  await assert.rejects(M.install({...f.options,action:'update'}),e=>e.code==='CANDIDATE_BLOCKED'&&/update --retry/.test(e.message));
+  const retry=await M.install({...f.options,retry:true});
+  assert.ok(retry.active);assert.notEqual(retry.active,first.active);
+  assert.equal(S.state(f.root).blocked,null);
+  assert.ok(M.backups(f.root).some(x=>x.id===first.active));
+  await S.verify(f.source,original);assert.equal((await M.doctor(f.root)).healthy,true);
+});
+
+test('failed reinstall retry stays blocked and never activates a candidate',async t=>{
+  const f=fixture(t),first=await M.install(f.options);
+  await M.original(f.root);
+  const blocked=S.state(f.root).blocked;
+  await assert.rejects(M.install({...f.options,retry:true,smoke:async()=>({passed:false})}),/Launch verification failed/);
+  assert.equal(S.state(f.root).active,null);assert.equal(S.state(f.root).blocked,blocked);
+  assert.ok(M.backups(f.root).some(x=>x.id===first.active));
+  await assert.rejects(M.install(f.options),e=>e.code==='CANDIDATE_BLOCKED');
+});
+
+test('blocked CLI install emits a typed error event without a result',async t=>{
+  const f=fixture(t);await M.install(f.options);await M.original(f.root);
+  const r=require('node:child_process').spawnSync(process.execPath,[path.join(__dirname,'../cli.cjs'),'install','--root',f.root,'--source',f.source,'--payload',f.payload,'--events'],{encoding:'utf8',windowsHide:true,timeout:15000});
+  assert.equal(r.status,1,r.stderr);
+  const events=r.stdout.trim().split(/\r?\n/).map(line=>JSON.parse(line));
+  const error=events.find(e=>e.type==='error');assert.equal(error.code,'CANDIDATE_BLOCKED');
+  assert.match(error.message,/install --retry/);assert.equal(events.some(e=>e.type==='result'),false);
+  assert.equal(S.state(f.root).active,null);
+});
 test('retention keeps two previous healthy generations',async t=>{
   const f=fixture(t),ids=[];
   for(let i=0;i<4;i++){fs.appendFileSync(path.join(f.source,'resources/app.asar'),String(i));ids.push((await M.install(f.options)).active);}

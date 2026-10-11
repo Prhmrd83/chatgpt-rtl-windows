@@ -6,7 +6,7 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\setup.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\setup.ps1" %*
 set "rtlResult=%errorlevel%"
 pause
 exit /b %rtlResult%

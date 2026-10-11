@@ -85,6 +85,39 @@ connection, and run `setup.cmd` again. A failed setup does not display the
 success message. The icon is installed with the launcher; the shortcut does
 not depend on the extracted ZIP folder after installation.
 
+## Reinstall after rollback or uninstall
+
+Rollback intentionally blocks the rejected app/patch combination to prevent
+automatic reactivation. Uninstall retains this block along with backups and
+the managed profile. This does not mean that downloading dependencies failed.
+
+Starting with version **0.1.3**, run `setup.cmd` normally. If the candidate is
+blocked, setup explains why and asks **Retry this installation now? [y/N]**.
+Enter `y` only if you intentionally rolled back a working version or resolved
+the earlier failure. Entering `n` or pressing Enter cancels; no success message
+is shown, and the block and backups remain intact. One retry runs the full
+verification and startup checks again. A further failure stops installation.
+
+For a deliberate retry without this question, open a terminal in the extracted
+folder and run:
+
+```powershell
+.\setup.cmd -Retry
+```
+
+If dependencies are already installed, use:
+
+```powershell
+.\chatgpt-rtl.cmd install --retry
+```
+
+Both installation paths recreate the Desktop/Start menu shortcuts and attempt
+to register the update task after successful app preparation. `update --retry`
+retries app preparation but does not restore integration removed by uninstall.
+Scheduled updates never display this question or automatically retry a blocked
+candidate. For an unresolved failure, inspect `chatgpt-rtl.cmd doctor` and the
+reported error before retrying.
+
 ## User acceptance checklist
 
 Use the patched shortcut and check these examples both while typing and in a

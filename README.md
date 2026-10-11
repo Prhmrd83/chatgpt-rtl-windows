@@ -1,5 +1,11 @@
 # ChatGPT RTL Windows
 
+Installer version **0.1.3** adds guided reinstall recovery: after rollback or
+uninstall, setup explains any blocked candidate and asks before retrying. Enter
+`y` to rerun verification and restore shortcuts; Enter/`n` cancels. An explicit
+`setup.cmd -Retry` or `chatgpt-rtl.cmd install --retry` is also available. See
+[reinstallation instructions](docs/INSTALLATION.md#reinstall-after-rollback-or-uninstall).
+
 Automatic right-to-left text support for **Persian, Arabic, and Hebrew mixed
 with English** in the unified Windows ChatGPT desktop app (Chat / Work / Codex).
 English prose, code, URLs, dates, versions, and arithmetic keep their intended
@@ -85,6 +91,13 @@ use and native editing still need the user's acceptance test.
 - [License](LICENSE) and [attribution](NOTICE.md)
 
 ## فارسی
+
+در نسخهٔ **0.1.3**، نصب مجدد پس از rollback یا uninstall راهنمای تعاملی دارد.
+اگر نسخه مسدود باشد، Setup دلیل را توضیح می‌دهد و برای تلاش مجدد تأیید می‌گیرد.
+با `y` همهٔ بررسی‌ها دوباره اجرا می‌شوند و میان‌برها بازسازی می‌شوند؛ Enter یا
+`n` نصب را لغو می‌کند. دستور `chatgpt-rtl.cmd install --retry` نیز برای تلاش
+مجدد صریح در دسترس است. بکاپ‌ها حفظ می‌شوند و اجرای خودکار نسخهٔ مسدود را
+بدون تصمیم شما دوباره فعال نمی‌کند.
 
 این پروژه نسخهٔ بهینه‌شده و مشتق‌شده از
 [پروژهٔ rt25ai](https://github.com/rt25ai/chatgpt-desktop-rtl-rt-ai) است و نام

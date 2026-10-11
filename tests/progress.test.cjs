@@ -16,6 +16,65 @@ function powershell(t,body,{timeout=20000}={}) {
 }
 function worker(temp,code) { const file=path.join(temp,'child with spaces.cjs');fs.writeFileSync(file,code);return psLiteral(file); }
 const node=psLiteral(process.execPath);
+
+test('setup.cmd forwards the explicit retry switch from a folder with spaces',t=>{
+  const temp=fs.mkdtempSync(path.join(os.tmpdir(),'rtl setup retry with spaces '));
+  t.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
+  fs.mkdirSync(path.join(temp,'scripts'));
+  fs.copyFileSync(path.join(project,'setup.cmd'),path.join(temp,'setup.cmd'));
+  fs.writeFileSync(path.join(temp,'scripts/setup.ps1'),"[CmdletBinding()]param([switch]$Retry)\nif(-not $Retry){exit 9}\nWrite-Host RETRY_FORWARDED\nexit 0\n");
+  const r=spawnSync('cmd.exe',['/d','/s','/c','setup.cmd -Retry <nul'],{cwd:temp,encoding:'utf8',windowsHide:true,timeout:15000});
+  assert.equal(r.status,0,r.stderr);assert.match(r.stdout,/RETRY_FORWARDED/);
+});
+
+for(const answer of ['y','YES','n',''])test('blocked manual install prompts once; answer '+JSON.stringify(answer),t=>{
+  const r=powershell(t,()=>`. ${psLiteral(path.join(project,'scripts/install-retry.ps1'))}
+$script:attempts=0;$script:prompts=0
+$install={param([bool]$retry) $script:attempts++; if(-not $retry){$e=New-Object System.InvalidOperationException('BLOCKED');$e.Data['code']='CANDIDATE_BLOCKED';throw $e};return @{active='verified-retry'}}
+$prompt={$script:prompts++;return ${psLiteral(answer)}}
+try{$result=Invoke-RtlInstallWithRetry -Install $install -Prompt $prompt;Write-Host ('ACTIVE='+$result.active)}catch{Write-Host ('FAILED='+$_.Exception.Message)}
+Write-Host ('ATTEMPTS='+$script:attempts);Write-Host ('PROMPTS='+$script:prompts)`);
+  assert.equal(r.status,0,r.stderr);assert.match(r.stdout,/PROMPTS=1/);
+  if(/^y(es)?$/i.test(answer)){assert.match(r.stdout,/ACTIVE=verified-retry/);assert.match(r.stdout,/ATTEMPTS=2/);}
+  else{assert.match(r.stdout,/FAILED=BLOCKED/);assert.match(r.stdout,/ATTEMPTS=1/);assert.doesNotMatch(r.stdout,/ACTIVE=/);}
+});
+
+for(const mode of ['automatic','explicit-retry','unrelated-error','retry-failure'])test('install retry preserves failure semantics: '+mode,t=>{
+  const r=powershell(t,()=>`. ${psLiteral(path.join(project,'scripts/install-retry.ps1'))}
+$script:attempts=0;$script:prompts=0
+$install={param([bool]$retry) $script:attempts++;$e=New-Object System.InvalidOperationException('FAILED');${mode==='unrelated-error'?'':"$e.Data['code']='CANDIDATE_BLOCKED';"}throw $e}
+try{Invoke-RtlInstallWithRetry -Install $install ${mode==='automatic'?'-Automatic':mode==='explicit-retry'?'-Retry':''} -Prompt {$script:prompts++;return 'y'} | Out-Null;throw 'Unexpected success'}catch{Write-Host ('ERROR='+$_.Exception.Message)}
+Write-Host ('ATTEMPTS='+$script:attempts);Write-Host ('PROMPTS='+$script:prompts)`);
+  assert.equal(r.status,0,r.stderr);assert.match(r.stdout,/ERROR=FAILED/);
+  assert.match(r.stdout,new RegExp('ATTEMPTS='+(mode==='retry-failure'?2:1)));
+  assert.match(r.stdout,new RegExp('PROMPTS='+(mode==='retry-failure'?1:0)));
+  assert.doesNotMatch(r.stdout,/Setup complete/);
+});
+
+for(const answer of ['y','n'])test('real install wrapper propagates blocked events and restores integration only after success: '+answer,t=>{
+  const r=powershell(t,()=>`. ${psLiteral(path.join(project,'scripts/install-retry.ps1'))}
+$script:project=${psLiteral(project)};$script:node='fixture-node';$script:cli='fixture-cli';$script:Root='fixture root with spaces';$script:Automatic=$false;$script:Options=@()
+$script:attempts=0;$script:configured=0;$script:prompts=0
+$tokens=$null;$errors=$null
+$ast=[Management.Automation.Language.Parser]::ParseFile(${psLiteral(path.join(project,'chatgpt-rtl.ps1'))},[ref]$tokens,[ref]$errors)
+foreach($name in @('Invoke-Core','Run-Action')){$fn=$ast.Find({param($a) $a -is [Management.Automation.Language.FunctionDefinitionAst] -and $a.Name -eq $name},$true);Invoke-Expression $fn.Extent.Text}
+function Say([string]$Text,[object]$Color){Write-Host $Text}
+function Source-App{return @{Path='source with spaces';Version='fixture-version'}}
+function Configure-Integration{$script:configured++}
+function Read-Host([string]$Prompt){$script:prompts++;return ${psLiteral(answer)}}
+function Invoke-RtlProcess {
+ param($FilePath,$ArgumentList,$WorkingDirectory,$Stage,[switch]$Events)
+ $script:attempts++
+ if($ArgumentList -notcontains '--source' -or $ArgumentList -notcontains 'source with spaces'){throw 'Missing source'}
+ if($ArgumentList -notcontains '--retry'){return @{ExitCode=1;Events=@(@{type='error';code='CANDIDATE_BLOCKED';message='BLOCKED'});Result=$null}}
+ return @{ExitCode=0;Events=@();Result=@{active='verified'}}
+}
+try{Run-Action 'install'}catch{Write-Host ('ERROR='+$_.Exception.Message)}
+Write-Host ('ATTEMPTS='+$script:attempts);Write-Host ('CONFIGURED='+$script:configured);Write-Host ('PROMPTS='+$script:prompts)`);
+  assert.equal(r.status,0,r.stderr);assert.match(r.stdout,/PROMPTS=1/);
+  if(answer==='y'){assert.match(r.stdout,/ATTEMPTS=2/);assert.match(r.stdout,/CONFIGURED=1/);assert.match(r.stdout,/Setup complete!/);}
+  else{assert.match(r.stdout,/ATTEMPTS=1/);assert.match(r.stdout,/CONFIGURED=0/);assert.doesNotMatch(r.stdout,/Setup complete!/);}
+});
 test('silent slow download keeps showing elapsed progress until child completes',t=>{
   const r=powershell(t,temp=>{
     const file=worker(temp,'setTimeout(()=>console.log("DOWNLOAD_FINISHED"),4500)');

@@ -47,7 +47,7 @@ async function run(args) {
       const active=S.readJSON(path.join(S.version(root,state.active),'record.json'));
       if(active.sourceVersion===o['source-version']&&active.payloadHash===S.hash(fs.readFileSync(payload)))return {unchanged:true,active:state.active};
     }
-    result=await M.install({root,source:o.source,sourceVersion:o['source-version'],payload,retry:o.retry,progress});
+    result=await M.install({root,source:o.source,sourceVersion:o['source-version'],payload,retry:o.retry,action:o.command,progress});
   } else if(o.command==='status')result={...S.state(root),backups:M.backups(root)};
   else if(o.command==='doctor') {result=await M.doctor(root);if(result.issues?.length)process.exitCode=1;}
   else if(o.command==='backup')result=M.backups(root);
@@ -72,7 +72,7 @@ if(require.main===module)run(process.argv.slice(2)).then(result=>{
   console.log(o.events?JSON.stringify({type:'result',result}):JSON.stringify(result,null,2));
 }).catch(error=>{
   try{const o=parse(process.argv.slice(2));if(o.automatic&&fs.existsSync(o.root))M.log(o.root,'automatic-error',{reason:error.message});}catch{}
-  if(process.argv.includes('--events')&&!process.argv.includes('--json'))console.log(JSON.stringify({type:'error',message:error.message}));
+  if(process.argv.includes('--events')&&!process.argv.includes('--json'))console.log(JSON.stringify({type:'error',message:error.message,...(error.code?{code:error.code}:{})}));
   else console.error('ERROR: '+error.message);
   process.exitCode=1;
 });

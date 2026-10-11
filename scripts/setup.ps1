@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param()
+param([switch]$Retry)
 $ErrorActionPreference = 'Stop'
 $project = Split-Path $PSScriptRoot -Parent
 . (Join-Path $PSScriptRoot 'progress.ps1')
@@ -15,7 +15,8 @@ try {
     Write-Host '  Downloading tools, then preparing a backed-up app copy.'
     $download = Invoke-RtlProcess -FilePath $node -ArgumentList @($npmCli,'--prefix',$project,'ci','--omit=dev','--ignore-scripts','--no-audit','--no-fund') -WorkingDirectory $project -Stage 'Downloading and installing dependencies'
     if ($download.ExitCode -ne 0) { throw 'Dependency installation failed. Check the connection and run setup.cmd again.' }
-    & (Join-Path $project 'chatgpt-rtl.ps1') install
+    if ($Retry) { & (Join-Path $project 'chatgpt-rtl.ps1') install --retry }
+    else { & (Join-Path $project 'chatgpt-rtl.ps1') install }
     exit $LASTEXITCODE
 } catch {
     Write-Host ('  [ERROR] ' + $_.Exception.Message)

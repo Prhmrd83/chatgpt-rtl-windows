@@ -11,6 +11,7 @@ from a terminal opened in the extracted project or installed controller folder.
 | `doctor` | Verify retained app snapshots and originals; report interrupted work and matching legacy patcher tasks. |
 | `update` | Rebuild from the current Store app when source or payload changed. |
 | `update --retry` | Explicitly retry a candidate blocked after failure or rollback. |
+| `install --retry` | Explicitly reinstall a blocked candidate and restore shortcuts and the update task after verification. |
 | `backup list` | List active, previous, and pristine snapshots. |
 | `rollback` | Verify and activate the previous retained generation. |
 | `rollback --id ID` | Select a specific retained previous generation. |
