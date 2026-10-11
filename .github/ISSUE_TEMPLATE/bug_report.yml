@@ -1,0 +1,31 @@
+name: Bug report
+description: Report an installation, recovery, or text-display problem.
+body:
+  - type: markdown
+    attributes:
+      value: Do not include account data, private conversations, credentials, app binaries, or backups. See SECURITY.md for private reports.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include Windows, Node.js, installer, and Store package versions.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the exact command or workflow. Use non-private text examples.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Redacted error or diagnostics
+      description: Review paths and content before sharing.

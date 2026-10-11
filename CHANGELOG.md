@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Preserve custom installation roots in shortcuts, scheduled updates, and commands
+  run from an installed controller.
+- Reject overlapping source/destination paths before writing installation files.
+- Verify only selected controller files during deployment, excluding unrelated
+  source-folder contents.
+- Add focused installation QA, documentation checks, and conditional renderer CI.
+- Restructure user/developer documentation and separate historical evidence from
+  current audit results. Preserve renderer 0.1.2 without byte changes.
+
 ## 0.1.3 — reinstall recovery
 
 - Explain blocked candidates during manual installation and offer one explicit
@@ -53,5 +64,5 @@
 - Preserve the original 29 checks and add language, editor, transaction,
   and archive regression tests.
 
-No public release or repository push is authorized until the owner accepts
-the supplied review package.
+The 0.1.0–0.1.2 candidate labels describe their historical review status.
+Repository source is now public. No new release is published by this audit.

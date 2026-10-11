@@ -1,4 +1,72 @@
-# Validation report
+# Validation results
+
+## Installation and secondary-feature audit — 11 October 2026
+
+Platform: Windows. Node.js: **24.15.0**. npm: **12.0.2**.
+Windows wrapper checks use Windows PowerShell 5.1.
+Native source: **OpenAI.Codex 26.1007.2314.0**.
+Installer version: **0.1.3**. Renderer version: **0.1.2**.
+
+The stable renderer was excluded from this audit. Its payload and the original
+renderer fixture/test files remain byte-identical to the baseline. No rendering
+suite was rerun and no text-direction algorithm was changed.
+
+| Check | Result | Scope |
+| --- | --- | --- |
+| Clean development dependency installation | Passed | Locked `npm ci --ignore-scripts`. |
+| Clean production dependency installation | Passed | Locked `npm ci --omit=dev --ignore-scripts`, separate extracted source. |
+| Existing transaction/archive tests | 26/26 passed | Synthetic sources, controlled startup, and real ASAR repacking. |
+| Existing Windows installer tests | 22/22 passed | Real wrappers/child processes, controlled failure/retry results, temporary shortcuts. |
+| New audit regressions | 5/5 passed | Overlap rejection, unrelated deployment junctions, and custom-root integration/controller. |
+| Native installation and explicit reinstall | Passed | Separate managed root; production-only dependencies used for reinstall; actual startup/readiness checks. |
+| Native lifecycle and controller | Passed | Status, backups, full doctor, unchanged automatic update, deployment, custom-root status, verify-launch, original rollback, Node uninstall, and blocked reinstall. |
+| Native previous-generation rollback | Passed | Returned to the retained earlier test copy; final doctor verified retained generations and original snapshot. |
+| Real Windows shortcuts | Passed | Native controller, temporary Desktop/Start menu destinations, custom root and icon. |
+| Real scheduled-task registration | Passed | Unique QA task, logon/daily triggers, limited principal, correct custom-root action; removed afterward. |
+| Documentation and script checks | Passed | Local Markdown targets/anchors, package/lock versions, license metadata, and PowerShell parsing. |
+
+The original 48 secondary checks passed before fixes. Five focused reproductions
+failed before the changes and passed afterward. The 53-check QA suite does not
+evaluate RTL rendering.
+
+### Confirmed defects and fixes
+
+- Custom roots were absent from shortcuts and scheduled updates. Commands in an
+  installed controller also defaulted to `%LOCALAPPDATA%`. Both integration paths
+  now pass `-Root`, and installed controllers derive their marked parent root.
+- Deployment hashed the whole source folder before filtering selected files.
+  An unrelated junction made deployment fail after app preparation. Verification
+  now visits only selected controller files while retaining source/destination
+  integrity checks and rejecting links within those files.
+- A destination beneath the source app was initialized before being rejected by
+  recursive copying. Source/destination overlap is now refused before any writes.
+
+### Environment and coverage limits
+
+The sandbox's default temporary folder initially rejected atomic renames, and
+junction creation required an unrestricted test process. Checks were rerun in
+disposable workspace folders; production behavior and assertions were retained.
+Initial Store discovery required an unrestricted read check.
+
+Native checks used isolated copied files and temporary verification profiles.
+No existing installation, shortcuts, scheduled task, or account profile was
+replaced. The original Store source remained read-only and was verified by the
+installation transaction. Verification processes and the QA task were closed.
+Temporary smoke profiles can remain when Windows still holds files; they were
+included in test-copy cleanup, rather than distributed.
+
+The native package version stayed the same throughout. An actual cross-version
+Store update was not available; synthetic tests cover source changes and races.
+Task registration and action arguments were checked, but waiting for a real
+logon/daily trigger was not part of this run. Shortcut creation used temporary
+destinations; the user's Desktop and Start menu were preserved. The guided setup
+entry point has automated wrapper coverage; a new user's complete double-click
+setup in their own profile remains distinct from these isolated checks.
+
+Signed-in panels, renderer behavior, clipboard, editor undo/save/reopen, and
+future vendor compatibility were outside this audit. Historical evidence follows.
+No release was published. GitHub About settings require manual application
+because the connector has no settings-update tool and the browser is signed out.
 
 ## 0.1.3 — reinstall recovery
 
@@ -31,9 +99,9 @@ Validation date: **9 October 2026**. Platform: Windows. Node.js: `24.15.0`.
 Store package: **OpenAI.Codex 26.1002.7124.0**.
 This application has been developed and tested only on Windows.
 
-**Status: ready for owner acceptance, not fully validated native behavior.**
-The owner elected to perform the remaining final app tests himself and requested
-a test ZIP. No code has been pushed; publication requires his final approval.
+**Historical status:** remaining native interaction acceptance was delegated
+to the owner. This is a record of that validation session, not the current
+repository publication state.
 Readable ordering is the primary criterion. Short option labels may remain
 anchored on the left if their text reads correctly and controls keep their positions.
 
@@ -100,7 +168,8 @@ compatibility across a real vendor-version update.
 - Unknown editor languages stay protected. Raster text, canvas/PDF raster content,
   closed Shadow DOM, and inaccessible external frames are outside DOM correction.
 - Future app versions and every mixed-script sentence are not guaranteed.
-- GitHub Actions has not run: no push occurred before approval.
+- The repository now has successful Windows Actions runs. These historical
+  results remain separate from CI and the current audit.
 
 ## Evidence
 
@@ -113,5 +182,5 @@ The owner's Question screenshot is not redistributed with source because it
 contains personal sidebar content. Earlier 0.1.1 TAP reports are replaced by the
 current combined automatic-suite output.
 
-Counts are diagnostic checks, not reliability percentages or a claim of flawless
-operation. This ZIP is an owner-test candidate, not an approved public release.
+Counts describe checks, not reliability percentages. The historical JSON files
+retain their original review-status fields; they do not describe today's publication state.

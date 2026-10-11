@@ -1,15 +1,12 @@
-# App-wide RTL — version 0.1.2
+# RTL coverage and limitations
 
-This application has been developed and tested only on Windows.
+Renderer version: **0.1.2**. Supported platform: Windows.
 
-## The problem addressed
+## Supported text flows
 
-Earlier versions classified message paragraphs and the composer. A Work
-Question prompt can instead be a block `span` outside message Markdown;
-Plan and file tabs can use a separate editor. These surfaces retained LTR
-direction, so English names at the beginning of Persian prose could produce
-the wrong reading order. The supplied Question and Plan examples are retained
-as regression fixtures.
+Questions can use labels outside message Markdown, while Plan and file tabs
+can use separate editors. Renderer 0.1.2 covers these independent text flows.
+The Question and Plan examples remain in the regression fixtures.
 
 The engine now walks accessible text throughout each recognized renderer.
 It classifies paragraphs, headings, captions, list items, standalone text
@@ -81,23 +78,46 @@ patched from the exact module URLs in their HTML. Unrecognized module layouts
 are rejected rather than guessed. Native detached-window behavior must still
 be validated on the installed app build.
 
-## Limits and release criteria
+## Limits
 
-Raster image text, canvas-only/PDF raster content, closed Shadow DOM, and
-inaccessible external frames cannot be rewritten through this DOM patch.
-Source-code editors and terminals are intentionally protected. Script counting
-is a direction heuristic, not a language parser; ambiguous prose needs a
-regression example. Future app versions can change editor structures.
+Raster image text, canvas-only/PDF raster content, closed shadow roots, and
+inaccessible external frames are outside this DOM patch. Source-code editors
+and terminals remain protected. Ambiguous prose needs a reproducible example;
+script counting cannot guarantee every mixed-language sentence. Vendor versions
+can change editor structures or detached-window behavior.
 
-Keep fixture results and real native-panel results separate. The 0.1.2 review
-candidate retains 29/29 in both baseline environments, supplemental regressions,
-and recorded native startup/backups/rollback evidence. On 9 October 2026 the
-owner elected to perform the remaining native-panel acceptance checks himself
-and requested a test package. The ZIP therefore represents an owner-test
-candidate, not a claim of complete native validation. Publication remains
-blocked until the owner's final approval. See the exact pending checks in
-[test results](TEST-RESULTS.md).
+Historical fixture and native-component results are recorded separately in
+[validation](TEST-RESULTS.md). Startup readiness is distinct from native editing
+acceptance. The installation audit does not rerun or modify the stable renderer.
 
-Installation, profile, backup paths, shortcut names, and the existing icon are
-unchanged. See [test results](TEST-RESULTS.md), [architecture](ARCHITECTURE.md),
-[development](DEVELOPMENT.md), and [installation](INSTALLATION.md).
+## Native acceptance checklist
+
+For a release that changes renderer behavior, verify real panels and record the
+app version and mode. These examples are retained from the original acceptance
+guide; historical results do not establish all native workflows.
+
+```text
+ChatGPT برای نوشتن و بررسی متن فارسی و انگلیسی به ما کمک می‌کند.
+من برای نوشتن کد از ChatGPT و Visual Studio Code استفاده می‌کنم.
+ChatGPT يساعدنا في كتابة النص العربي والإنجليزي بشكل صحيح.
+ChatGPT עוזר לנו לכתוב ולבדוק טקסט בעברית ובאנגלית בצורה נכונה.
+The Persian greeting سلام means hello in English.
+نتیجهٔ محاسبه 2 + 3 = 5 درست است.
+نسخهٔ 1.2.3 در تاریخ 2026-10-07 منتشر شد.
+https://example.com/a?x=1&y=2
+```
+
+- Check reading order in messages, Questions/options, reply inputs, and Plan.
+- Check pure English, inline code, fences, URLs, arithmetic, streaming, and
+  equal-length replacement. Saved logical characters must remain unchanged.
+- In real plain-text/Markdown tabs, test typing, selection, copy, undo, cursor
+  movement, save, and reopen. Source-code files and fences must remain LTR.
+- Check document headings/lists, previews, detached windows, newly mounted
+  panels, and switching file types.
+- Confirm sidebar/mode controls, menus, option markers, and arrows remain
+  clickable in their existing layout. A short label can stay left-anchored
+  while its text reads RTL.
+
+Use non-private examples when reporting failures. See
+[architecture](ARCHITECTURE.md), [development](DEVELOPMENT.md), and
+[installation](INSTALLATION.md) for component and lifecycle details.

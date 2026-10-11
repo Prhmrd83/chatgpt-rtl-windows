@@ -4,115 +4,109 @@
 
 | Component | Responsibility |
 | --- | --- |
-| `payload.js` | In-page text classification, visual isolation, editor CSS, streaming observation, and the inherited narrow drag-region workaround. |
-| `lib/archive.cjs` | Recognized ASAR/webview layout, exact payload injection, app-contained-core setting, header-hash replacement, and untouched-content verification. |
-| `lib/store.cjs` | Safe owned paths, file hashes, manifests, process lock, and atomic JSON writes. |
-| `lib/manager.cjs` | Snapshots, candidate staging, activation, retention, rollback, integrity diagnostics, and transaction logs. |
-| `lib/smoke.cjs` | Native startup verification through a fresh temporary renderer profile, without copying authentication files. |
-| `cli.cjs` | Machine-readable operations and running-copy checks. |
-| `chatgpt-rtl.ps1` | English UI, Store discovery, stable shortcuts, launcher fallback, and per-user scheduled task. |
+| `payload.js` | Text classification, visual isolation, editor adapters, streaming observation, and the inherited drag-region workaround. |
+| `lib/archive.cjs` | Recognized ASAR layouts, payload injection, compatibility setting, header-hash replacement, and content-preservation checks. |
+| `lib/store.cjs` | Owned paths, manifests, hashes, process locks, and atomic JSON writes. |
+| `lib/manager.cjs` | Snapshots, staging, activation, retention, rollback, diagnostics, and logs. |
+| `lib/smoke.cjs` | Temporary-profile native startup verification. |
+| `cli.cjs` | Node operations, JSON/event output, and running-copy checks. |
+| `chatgpt-rtl.ps1` | Windows UI, Store discovery, launch fallback, and integration. |
+| `scripts/setup.ps1` | Node prerequisite check, locked dependency installation, and guided setup. |
+| `scripts/deploy.cjs` | Verified stable-controller deployment. |
+| `scripts/integration.ps1` | Desktop/Start menu shortcuts and their verification. |
+| `scripts/progress.ps1` | Child-process output, progress display, and owned-tree cleanup. |
+| `scripts/install-retry.ps1` | Explicit, one-time retry for blocked manual installation. |
 
-## Renderer
+## Renderer boundary
 
-The engine classifies accessible text across the application. Semantic blocks
-and independent div/span labels receive text direction; flex/grid/layout
-containers remain unchanged. Only scoped text-direction rules override vendor
-alignment. No app-wide dir/lang attributes are added. Read-only Latin/numeric
-runs use owned isolation spans, while original framework Text anchors remain
-connected for streaming updates. Logical selection offsets are restored.
+The renderer classifies each supported text flow independently. RTL script
+letters and Latin letters determine a majority; a tie uses the first strong
+character. Numbers, punctuation, code, and rendered math do not determine prose
+direction. This is a script heuristic, not natural-language parsing.
 
-Editors use CSS with a native CodeMirror decoration adapter where the verified
-module and public bidi APIs are available. Explicit plain-text/Markdown metadata enables source
-adapters, including CodeMirror metadata on its internal .cm-content. Nested
-editable blocks get positional CSS selectors. Generic model children stay
-untouched; CodeMirror owns its decorations and selection mapping. The archive
-adapter discovers the editor library through the recognized editor module's
-imports and validates its public capabilities at runtime. No editor text or
-document changes are dispatched by the patch.
-Native fenced-code lines, technical inputs, terminals, math, and unknown code
-editors remain protected. Input resets and file-language changes are rechecked.
+Semantic blocks and independent labels receive scoped classes/styles. Flex/grid
+layout containers keep their layout; no global `dir` or `lang` attributes are
+added. Read-only Latin/numeric runs use isolation spans while original framework
+Text anchors remain connected. Logical selection offsets are restored.
 
-Documents, open shadow roots, and accessible same-origin frames have separate
-styles/observers. DOM and editor rule work is staged across animation frames.
-See [app-wide coverage](APP-WIDE-RTL.md) for exact adapters, limits, and the
-separate fixture/native release criteria.
+Editing uses CSS and, when available, the verified native CodeMirror decoration
+and bidi APIs. Plain-text/Markdown metadata enables source-editor treatment;
+CodeMirror metadata can be on `.cm-content`. Generic model children remain
+untouched. No editor document changes are dispatched. Unknown source languages,
+terminals, technical inputs, gutters, and fenced code remain protected.
 
-The inherited drag-region workaround remains narrowly scoped to elements whose
-computed state indicates a noninteractive phantom region. It does not give the
-patch ownership of normal window chrome.
+Documents, accessible same-origin frames, and open shadow roots have separate
+styles/observers. Work is batched across animation frames. The narrow inherited
+drag-region workaround applies only to detected noninteractive phantom regions.
+See [coverage](APP-WIDE-RTL.md) for adapters and limits.
 
 ## Archive transformation
 
-The adapter reads `webview/index.html` and requires exactly one recognized
-module entry per supported HTML page (main and optional detached window). It does not inject into every file matching a guessed glob.
-Entry paths must stay inside the archive. Source bundles already bearing an
-RTL patch marker are refused; use the original Store app.
+The adapter reads `webview/index.html` and the optional recognized
+`detached-window.html`. Each HTML page must identify one module entry whose path
+stays inside the archive. Already-patched source bundles are rejected.
 
-`@electron/asar` streams a new archive while preserving the original file tree
-and each native file's unpacked status. Only the grounded entry bundles and recognized
-package setting change. Unmodified files are checked against the actual
-pristine bytes, including unpacked native files whose vendor header integrity
-metadata can differ from the on-disk post-build file. Archive symlinks currently
-require another tested adapter and are refused.
+`@electron/asar` streams a new archive, preserving its file tree and each native
+file's unpacked status. Only grounded entry bundles and the recognized package
+setting change. Unmodified content is compared against pristine bytes, including
+unpacked native files whose vendor header metadata may be stale. Archive links
+require a separate tested adapter and are refused.
 
-Electron's ASAR integrity reference hashes the header JSON, not the entire
-archive. The adapter replaces matching 64-character SHA-256 references in the
-copied ChatGPT/Codex launchers without resizing them. If no known reference is
-found, compatibility is unestablished and activation stops. Integrity fuses are
-not disabled.
+Electron's integrity reference hashes the ASAR header JSON, not the whole
+archive. Matching 64-character SHA-256 references in copied launchers are
+replaced without resizing the binaries. Missing references stop preparation;
+integrity fuses are not disabled.
 
-The recognized `codexWindowsAppContainedCore` setting is changed from `1` to `0`
-in the copy so the copied app can use its bundled core outside the Store package
-identity, following the upstream mechanism. Unknown app identity or setting
-values are refused. This does not make the modified executable officially signed.
+The recognized `codexWindowsAppContainedCore` value changes from `1` to `0`
+so the copy can use its bundled core outside Store identity, following upstream.
+An absent setting is left absent; unknown identities or setting values are
+refused. Modifying a launcher changes its signature status.
 
-## Transaction model
+## Managed storage
 
-The default owned root is `%LOCALAPPDATA%\Programs\ChatGPT-RTL`:
+Default root: `%LOCALAPPDATA%\Programs\ChatGPT-RTL`.
 
 ```text
 ChatGPT-RTL/
   .chatgpt-rtl-owned
   state.json
-  operation.lock                  # only while an operation is running
-  controller/                     # stable tool installation
-  profile/                        # managed app profile; not an app-file backup
-  versions/<id>/app/               # immutable copied app generation
-  versions/<id>/record.json        # source, payload, health, and file hashes
+  operation.lock
+  controller/
+  profile/
+  versions/<id>/app/
+  versions/<id>/record.json
   backups/original-<fingerprint>/app/
   backups/original-<fingerprint>/manifest.json
   transactions/<id>.json
   logs/events.jsonl
 ```
 
-`state.json` has schema version 1, an active generation ID, up to two previous
-IDs, and a blocked candidate key. Candidates are identified by the source tree
-and payload hash. A transaction records `preparing`, `validated`, `committed`,
-or `failed`. The state pointer is written to a temporary file, flushed, and
-renamed into place. A failed preparation cannot promote its candidate.
+`state.json` schema 1 tracks an active generation, up to two previous IDs, and
+a blocked candidate key. Candidate identity combines source-tree and payload
+hashes. Journals record `preparing`, `validated`, `committed`, or `failed`.
+Pointer writes use a temporary file, flush, and rename. Failed preparation
+cannot promote a candidate.
 
-One process owns the operation lock. A dead-owner lock can be recovered; a
-live-owner lock prevents another mutation. Paths must be beneath the marked
-root. System directories, filesystem roots, traversal, and reparse paths are
-refused. Cleanup only addresses owned generation directories after successful
-activation, with the immediately prior controller retained during tool deployment.
+One live process owns the mutation lock. Dead-owner locks can be recovered.
+Source and destination must not overlap. Paths stay within the marked root;
+filesystem roots, banned user/system locations, traversal, and junction paths
+are rejected. Cleanup follows successful activation and targets owned retired
+generations. Controller deployment verifies only its selected source files and
+keeps the immediately previous controller in case files remain in use.
 
-Snapshots are program-file backups. They are not copies of MSIX registration
-or user profiles and cannot reinstall a removed Store package by themselves.
+Snapshots back up program files, not MSIX registration, conversations, or
+profiles. The stable `profile` remains separate from generation records.
 
-## Native health check
+## Startup and launch
 
-The candidate is launched with a new `--user-data-dir`, a dynamic debugging port,
-and a loopback address. The check requires a port file in that new profile,
-connects only to that endpoint, and confirms body content and the payload's
-readiness flag. It waits briefly for early startup failure, then closes the
-instance and removes the temporary profile where possible.
+Candidate startup uses a new `--user-data-dir`, a dynamic debugging port, and
+a loopback address. The check requires the new profile's port file, connects to
+that endpoint, checks body content and payload readiness, and waits briefly for
+early exit. It then closes the owned instance and removes the temporary profile
+where possible. Normal launches do not enable debugging.
 
-The ordinary launcher does not enable a debugging port. Tests do not log into
-an account. Ordinary launches use the stable dedicated profile under the managed
-root, independent of the temporary health-check profile and the original app's
-renderer profile. Native account/task state may still be shared by the platform;
-the patch does not copy authentication files.
-Startup readiness does not prove signed-in conversations, service
-acceptance of an older client, or all future DOM selectors. The user acceptance
-test and rendering fixtures remain necessary.
+Before ordinary launch, the Windows wrapper attempts a noninteractive update.
+It then verifies the active archive and launcher hashes. Critical-file failure
+or a disabled active pointer falls back to the original Store app. Native
+account state may be shared; no authentication files are copied. Readiness
+does not prove every signed-in workflow or future vendor layout.

@@ -56,17 +56,23 @@ registration or attempt a Store downgrade.
 
 ## Automatic updates
 
+Desktop shortcuts and the task retain the selected managed root. Only one
+integrated installation per Windows user is intended because these names are fixed.
+
 The task **ChatGPT RTL Safe Update** runs as the current user, without elevation,
 at logon and daily at 12:00 local time. The launcher checks before opening too.
 It compares the installed Store version and the local payload, builds a separate
 copy if needed, and verifies compatibility and isolated startup before switching.
 It does not download new project source or interrupt an open managed app.
 
+Errors from Node preparation are recorded in `logs/events.jsonl`. Windows
+discovery errors can stop the wrapper before Node logging; inspect the command
+exit status and the Store installation in that case.
+
 Failed candidates remain blocked until an explicit retry or a different source/
 payload produces a different candidate key. A Store version whose layout is
 unrecognized leaves the previous copy active. A failed critical-file check at
-launch falls back to the original app. This is failure containment, not a
-promise that every future ChatGPT release is supported.
+launch falls back to the original app. This is recovery behavior; future ChatGPT builds may need adapter changes.
 
 ## Common failures
 

@@ -11,5 +11,7 @@ replacement and `codexWindowsAppContainedCore` handling from its `patch.ps1`.
 Installation, transaction management, backup verification, CLI, tests, and
 documentation are extended or rewritten in this project.
 
+Upstream author website: https://rt-ai.co.il.
+
 The upstream MIT copyright notice is retained in LICENSE. This project is
 independent of RT-AI and OpenAI. It contains no OpenAI app binaries or account data.

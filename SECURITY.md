@@ -1,34 +1,44 @@
 # Security and privacy
 
-This is a community patch, not an OpenAI or RT-AI product. Modifying the copied
-application executable changes its signature status. Do not disable Windows
-Security or assume that an alert is a false positive. Inspect the exact alert.
+ChatGPT RTL Windows is an independent community patch. It reads the original
+Store app and modifies a copy in the managed directory. Patching an executable
+changes its signature status. Inspect Windows Security alerts; do not disable
+protection or assume an alert is harmless.
 
-The original Store application is read, never patched. Changes are confined to
-the owned managed directory, its dedicated shortcuts, and its scheduled task.
-No antivirus exceptions, global PowerShell execution-policy changes, elevation,
-or account credentials are required by the installer. The launcher uses a process-scoped
-PowerShell execution-policy argument to run its local scripts.
+## Installation boundaries
 
-The patch updates the embedded ASAR header hash in the copied launcher; it
-does not disable Electron's integrity fuse. Unknown archive/executable layouts
-are rejected. A launch check with a fresh renderer profile uses a loopback debugging
-port only during verification and closes it before activation. Normal launches
-do not enable debugging. Never expose that port on a network interface.
+Setup does not require elevation, antivirus exceptions, credentials, or changes
+to global PowerShell policy. Launchers use a process-scoped execution-policy
+argument. Enforced organizational policies may still block them.
 
-The native platform may share account state even with a fresh renderer profile.
-The patch does not read or copy authentication files; a fresh profile must not
-be described as a guarantee that the native app is signed out.
+The archive adapter updates recognized header-hash references without disabling
+Electron's integrity fuse. Unknown structures are rejected. Managed source and
+destination paths must be separate; symlink/junction traversal is refused in
+managed paths and copied source trees.
 
-Backups contain proprietary app files. Keep them on your own computer. They are
-not encrypted and do not include your account profile or cloud conversations.
-The patch sends no telemetry. npm setup downloads packages from the npm
-registry; launching ChatGPT uses ChatGPT's normal network services. Logs contain
-local paths, versions, timestamps, and error messages. Review them before sharing.
+Temporary startup verification enables a dynamic loopback debugging endpoint,
+checks a fresh renderer profile, and closes the owned instance before activation.
+Ordinary launches do not enable debugging. Never expose the verification port
+on a network interface.
 
-Report security problems privately through GitHub's private vulnerability
-reporting **if the repository owner enables it**. Otherwise contact the owner
-through a channel they publish. Do not post credentials or account data in issues.
+## Data and network access
 
-The source license covers this project's code; it does not license OpenAI's
-application, third-party bundled runtime components, or service access.
+The installer does not copy authentication files or migrate the original
+profile. Native account state may be shared despite a separate renderer
+profile; a fresh profile does not guarantee sign-out.
+
+Backups contain local proprietary program files. They are unencrypted and do
+not include cloud conversations or the account profile. Keep them private.
+The tool adds no telemetry. npm setup downloads locked dependencies; ordinary
+ChatGPT sessions use the application's normal services.
+
+Logs include paths, versions, timestamps, and errors. Review and redact them
+before sharing. Do not upload copied app files, account data, or credentials.
+The source license does not license OpenAI binaries or service access.
+
+## Report a vulnerability
+
+Use GitHub private vulnerability reporting if it is enabled for this repository.
+Otherwise contact the maintainer through a private channel they publish. Do not
+post secrets or account data in a public issue. No response-time or support
+guarantee is stated for this community project.
