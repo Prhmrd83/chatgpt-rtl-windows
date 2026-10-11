@@ -8,6 +8,10 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $project = $PSScriptRoot
+if (-not $PSBoundParameters.ContainsKey('Root') -and (Split-Path $project -Leaf) -eq 'controller') {
+    $installedRoot = Split-Path $project -Parent
+    if (Test-Path -LiteralPath (Join-Path $installedRoot '.chatgpt-rtl-owned')) { $Root = $installedRoot }
+}
 $node = (Get-Command node.exe -ErrorAction Stop).Source
 $cli = Join-Path $project 'cli.cjs'
 $taskName = 'ChatGPT RTL Safe Update'
@@ -57,9 +61,9 @@ function Configure-Integration {
         if ($deployment.ExitCode -ne 0) { throw 'App was prepared, but controller deployment failed. Keep this downloaded folder and retry install.' }
     }
     if (-not $Automatic) { Say '  Creating Desktop and Start menu shortcuts...' Cyan }
-    New-RtlShortcuts -InstalledTools $installedTools -Directories @([Environment]::GetFolderPath('Desktop'),(Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs'))
+    New-RtlShortcuts -InstalledTools $installedTools -Root $Root -Directories @([Environment]::GetFolderPath('Desktop'),(Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs'))
     try {
-        $action = New-ScheduledTaskAction -Execute (Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe') -Argument ('-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + (Join-Path $installedTools 'chatgpt-rtl.ps1') + '" update -Automatic')
+        $action = New-ScheduledTaskAction -Execute (Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe') -Argument ('-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + (Join-Path $installedTools 'chatgpt-rtl.ps1') + '" update -Automatic -Root "' + $Root + '"')
         $triggers = @((New-ScheduledTaskTrigger -AtLogOn -User ([Security.Principal.WindowsIdentity]::GetCurrent().Name)),(New-ScheduledTaskTrigger -Daily -At '12:00'))
         $principal = New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
         $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 30)

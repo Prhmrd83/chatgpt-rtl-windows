@@ -12,10 +12,17 @@ S.withLock(root,async()=>{
   const stage=S.inside(root,stageName),old=S.inside(root,oldName);
   fs.mkdirSync(stage);
   const items=['lib','scripts','assets','node_modules','cli.cjs','payload.js','chatgpt-rtl.cmd','chatgpt-rtl.ps1','package.json','package-lock.json','LICENSE','NOTICE.md'];
-  for(const item of items)fs.cpSync(path.join(source,item),path.join(stage,item),{recursive:true});
   // Verify the deployed controller against the selected source files, not
-  // against a manifest generated from the destination itself.
-  const expected=(await S.tree(source)).filter(file=>items.some(item=>file.path===item||file.path.startsWith(item+'/')));
+  // against the destination or unrelated contents of the downloaded folder.
+  const expected=[];
+  for(const item of [...items].sort((a,b)=>a.localeCompare(b))) {
+    const file=path.join(source,item),stat=fs.lstatSync(file);
+    if(stat.isSymbolicLink())throw Error('Controller symlink/reparse point refused: '+file);
+    if(stat.isDirectory())expected.push(...(await S.tree(file)).map(entry=>({...entry,path:item+'/'+entry.path})));
+    else if(stat.isFile())expected.push({path:item,size:stat.size,sha256:await S.fileHash(file)});
+    else throw Error('Unsupported controller entry: '+file);
+  }
+  for(const item of items)fs.cpSync(path.join(source,item),path.join(stage,item),{recursive:true});
   await S.verify(stage,expected);
   if(fs.existsSync(target))fs.renameSync(target,old);
   try{fs.renameSync(stage,target);}catch(e){if(fs.existsSync(old))fs.renameSync(old,target);throw e;}

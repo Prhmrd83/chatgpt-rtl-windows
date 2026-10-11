@@ -2,17 +2,19 @@
   "name": "chatgpt-rtl-windows",
   "version": "0.1.3",
   "private": true,
-  "description": "Transactional RTL patch for the unified Windows ChatGPT desktop app, derived from rt25ai.",
+  "description": "Persian, Arabic, and Hebrew text support for the Windows ChatGPT desktop app, with verified installation, backups, and rollback.",
   "license": "MIT",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
-    "test": "node --test tests/core.test.cjs tests/progress.test.cjs && node tests/render.cjs && node tests/surfaces.cjs",
+    "test": "npm run test:qa && node tests/render.cjs && node tests/surfaces.cjs",
     "test:core": "node --test tests/core.test.cjs",
     "test:render": "node tests/render.cjs",
     "test:installer": "node --test tests/progress.test.cjs",
-    "test:surfaces": "node tests/surfaces.cjs"
+    "test:surfaces": "node tests/surfaces.cjs",
+    "test:qa": "node --test tests/core.test.cjs tests/progress.test.cjs tests/audit.test.cjs",
+    "check:docs": "node scripts/check-docs.cjs"
   },
   "dependencies": {
     "@electron/asar": "4.3.1",
@@ -24,5 +26,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Prhmrd83/chatgpt-rtl-windows.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Prhmrd83/chatgpt-rtl-windows/issues"
   }
 }

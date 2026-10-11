@@ -2,5 +2,10 @@
 *.js text eol=lf
 *.cjs text eol=lf
 *.md text eol=lf
+*.json text eol=lf
 *.ps1 text eol=crlf
 *.cmd text eol=crlf
+# These verified renderer sources retain their existing bytes, including line endings.
+payload.js -text
+tests/fixture.cjs -text
+tests/render.cjs -text
