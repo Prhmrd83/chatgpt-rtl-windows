@@ -10,6 +10,8 @@
   successful reinstall. Report the correct install/update recovery command.
 - Add lifecycle and Windows installer regressions for acceptance, cancellation,
   unrelated failures, retry failures, and successful integration restoration.
+- Display every stage transition even when a busy parent receives several
+  progress events together; retain silent automatic execution.
 
 ## 0.1.2 — owner-test candidate
 

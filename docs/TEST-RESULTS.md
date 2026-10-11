@@ -7,10 +7,11 @@ Validation date: **11 October 2026**. Platform: Windows.
 - Transaction/archive tests: **26/26 passed**. New regressions reproduce
   install → original rollback → uninstall → blocked install → explicit retry,
   retained backups, failed startup on retry, and typed CLI error events.
-- Installer/controller tests: **21/21 passed**. New cases cover accepting,
+- Installer/controller tests: **22/22 passed**. New cases cover accepting,
   declining, empty input, one retry only, automatic/noninteractive behavior,
   unrelated errors, restoration of integration only after success, and the
-  actual `setup.cmd -Retry` entry point from a folder with spaces.
+  actual `setup.cmd -Retry` entry point from a folder with spaces. A CI-discovered
+  delayed-output issue is covered: batched stage events each remain visible.
 - Original rendering: **29/29 neutral and 29/29 with installed-app styles**
   (retained stylesheet assets from `26.1002.7124.0`). Supplemental rendering:
   **15/15**. App-wide surface fixtures: **116/116**. The renderer payload is

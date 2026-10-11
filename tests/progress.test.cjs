@@ -107,6 +107,16 @@ test('phase events reach parent while work is running and result is parsed',t=>{
   assert.match(r.stdout,/Checking isolated startup/);
   assert.match(r.stdout,/RESULT_OK/);
 });
+
+test('batched stage events remain visible even when the child has already finished',t=>{
+  const r=powershell(t,temp=>{
+    const file=worker(temp,'for(const message of ["Verifying pristine backup","Checking isolated startup"]){console.log(JSON.stringify({type:"progress",message}));}console.log(JSON.stringify({type:"result",result:{active:"batched"}}))');
+    return `$r=Invoke-RtlProcess -FilePath ${node} -ArgumentList @(${file}) -Events\nif($r.Result.active -ne 'batched'){throw 'Missing result'}`;
+  });
+  assert.equal(r.status,0,r.stderr);
+  assert.match(r.stdout,/Verifying pristine backup/);assert.match(r.stdout,/Checking isolated startup/);
+  assert.ok(r.stdout.indexOf('Verifying pristine backup')<r.stdout.indexOf('Checking isolated startup'));
+});
 test('quiet automatic runner emits no progress or captured child logs',t=>{
   const r=powershell(t,temp=>{
     const file=worker(temp,'console.log("hidden log");console.error("hidden stderr");console.log(JSON.stringify({type:"result",result:{active:"quiet"}}))');

@@ -54,7 +54,17 @@ function Invoke-RtlProcess {
                         $event = $line | ConvertFrom-Json -ErrorAction Stop
                         $messages.Add($event)
                         switch ($event.type) {
-                            'progress' { $Stage = [string]$event.message; $lastDraw = -10000 }
+                            'progress' {
+                                $nextStage = [string]$event.message
+                                # A delayed parent can receive several stages in one batch.
+                                # Display each transition before a later event replaces it.
+                                if (-not $Quiet -and $nextStage -ne $Stage) {
+                                    if ($interactive -and $width) { Write-Host ("`r" + (' ' * $width) + "`r") -NoNewline; $width = 0 }
+                                    Write-Host ('  > ' + $nextStage)
+                                }
+                                $Stage = $nextStage
+                                $lastDraw = -10000
+                            }
                             'result' { $result = $event.result; $resultSeen = $true }
                             'error' { $lines.Add([string]$event.message) }
                             default { throw 'Unknown progress event from the installer.' }
